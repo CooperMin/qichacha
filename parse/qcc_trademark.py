@@ -13,21 +13,14 @@ from support.mysql import QccMysql as db
 from support.others import timeInfo as tm
 from support.headers import GeneralHeaders as gh
 
-class PatentInfo():
+class TradeMarkInfo():
 
     def get_com_id(self):
-        # sel = """
-        # SELECT `com_id`
-        # FROM `com_info`
-        # WHERE `origin`
-        # IS NOT NULL AND LENGTH(`com_id`) > 5
-        # ORDER BY `com_id`;
-        # """
         sel = """
-        SELECT `com_id`,`com_name`,`status`,`count_patent`
+        SELECT `com_id`,`com_name`,`status_tm`,`count_tm`
         FROM `com_info` 
         WHERE `origin` 
-        IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status` IS NULL AND `count_patent` != '0'
+        IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status_tm` IS NULL AND `count_patent` != '0'
         ORDER BY RAND() LIMIT 1;
         """
         result = db().selsts(sel)
@@ -59,7 +52,6 @@ class PatentInfo():
         else:
             index_url = 'https://www.qichacha.com'
             com_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&tab=assets'
-            # f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=assets&box=rjzzq'
             hds = gh().header()
             hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})
             time.sleep(random.randint(1,2))
@@ -152,13 +144,6 @@ class PatentInfo():
                           f'发明人:{inventor}\n申请（专利权）人:{applicant}\n代理机构:{agency}\n代理人:{agent}\nIPC分类号:{ipc}\n'
                           f'CPC分类号:{cpc}\n申请人地址:{app_address}\n申请人邮编:{app_zip_code}\n摘要:{abstract}\n摘要附图:{abstract_photo}\n'
                           f'权利要求:{claim}\n说明书:{instructions}')
-                    # patent_num =tree_pg.xpath('//table/tr[position()>1]/td[@class="tx"]/text()')
-                    # patent_type = tree_pg.xpath('//table/tr[position()>1]/td[2]/text()')
-                    # patent_pub_date = tree_pg.xpath('//table/tr[position()>1]/td[3]/text()')
-                    # patent_name = tree_pg.xpath('//table/tr[position()>1]/td[4]/text()')
-                    # app_num = tree_pg.xpath('//table/tr[position()>1]/td[5]/a/text()')
-                    # app_link = tree_pg.xpath('//table/tr[position()>1]/td[5]/a/@href')
-                    # print(f'{patent_num}\n{patent_type}\n{patent_pub_date}\n{patent_name}\n{app_num}\n{app_link}')
                     ins = f"""
                     INSERT INTO  
                     `com_patent`

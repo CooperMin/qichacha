@@ -6,3 +6,4 @@ class timeInfo():
     def get_localtime(self):
         localtime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())  # 当前时间
         return localtime
+

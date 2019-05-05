@@ -16,13 +16,6 @@ from support.headers import GeneralHeaders as gh
 class PatentInfo():
 
     def get_com_id(self):
-        # sel = """
-        # SELECT `com_id`
-        # FROM `com_info`
-        # WHERE `origin`
-        # IS NOT NULL AND LENGTH(`com_id`) > 5
-        # ORDER BY `com_id`;
-        # """
         sel = """
         SELECT `com_id`,`com_name`,`status`,`count_patent`
         FROM `com_info` 
@@ -59,7 +52,6 @@ class PatentInfo():
         else:
             index_url = 'https://www.qichacha.com'
             com_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&tab=assets'
-            # f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=assets&box=rjzzq'
             hds = gh().header()
             hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})
             time.sleep(random.randint(1,2))
@@ -85,11 +77,11 @@ class PatentInfo():
         com_name = value[1]
         count_page = value[2]
 
-        # 临时代码，供单次补采数据
-        com_id = '9cce0780ab7644008b73bc2120479d31'
-        com_name = '小米科技有限责任公司'
+        # 临时代码，供单次补采数据【001】
+        com_id = '3af639d1a46f356c27f3db1e86572405'
+        com_name = '京东方科技集团股份有限公司'
         count_page = 500
-        # 临时代码，供单次补采数据
+        # 临时代码，供单次补采数据【001】
 
         if com_id == None:
             pass
@@ -97,9 +89,8 @@ class PatentInfo():
             key = pt.search_key(com_name)
             index_url = value[3]
             count = 0
-            for page in range(409, count_page + 1): #临时代码，供单次补采数据
+            for page in range(278, count_page + 1): #临时代码，供单次补采数据【001】
             # for page in range(1, count_page + 1):
-                # 'https://www.qichacha.com/company_getinfos?unique=&companyname=&p=2&tab=assets&box=zhuanli&zlpublicationyear=&zlipclist=&zlkindcode=&zllegalstatus='
                 page_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=assets&box=zhuanli'
                 hds = gh().header()
                 hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})
@@ -160,13 +151,6 @@ class PatentInfo():
                           f'发明人:{inventor}\n申请（专利权）人:{applicant}\n代理机构:{agency}\n代理人:{agent}\nIPC分类号:{ipc}\n'
                           f'CPC分类号:{cpc}\n申请人地址:{app_address}\n申请人邮编:{app_zip_code}\n摘要:{abstract}\n摘要附图:{abstract_photo}\n'
                           f'权利要求:{claim}\n说明书:{instructions}')
-                    # patent_num =tree_pg.xpath('//table/tr[position()>1]/td[@class="tx"]/text()')
-                    # patent_type = tree_pg.xpath('//table/tr[position()>1]/td[2]/text()')
-                    # patent_pub_date = tree_pg.xpath('//table/tr[position()>1]/td[3]/text()')
-                    # patent_name = tree_pg.xpath('//table/tr[position()>1]/td[4]/text()')
-                    # app_num = tree_pg.xpath('//table/tr[position()>1]/td[5]/a/text()')
-                    # app_link = tree_pg.xpath('//table/tr[position()>1]/td[5]/a/@href')
-                    # print(f'{patent_num}\n{patent_type}\n{patent_pub_date}\n{patent_name}\n{app_num}\n{app_link}')
                     ins = f"""
                     INSERT INTO  
                     `com_patent`
@@ -193,10 +177,10 @@ class PatentInfo():
                     `com_id` = "{com_id}" ;
                     """
                     db().updsts(upd)
-                    # input('暂停')
             localtime = tm().get_localtime()  # 当前时间
             print('\n{1}\n{0}数据采集完成!{0}\n{1}'.format('+' * 7, '+' * 25))
             print(f'当前时间：{localtime}')
+            time.sleep(3)
 
 
 

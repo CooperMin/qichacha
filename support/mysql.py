@@ -8,7 +8,8 @@ import pymysql
 import time
 
 class QccMysql():
-    def __init__(self): #数据库连接信息
+    def __init__(self): #
+        ## -- cedata服务器 -- ##
         # self.conn = pymysql.connect(
         #     host = 'dev.xiyiqq.com',
         #     port = 51306,
@@ -16,6 +17,9 @@ class QccMysql():
         #     passwd = 'xiyiDATA.1',
         #     db = 'cebd_laoshan'
         # )
+        ## -- cedata服务器 -- ##
+
+        ## -- 本地服务器 -- ##
         self.conn = pymysql.connect(
             host = 'localhost',
             port = 3306,
@@ -23,6 +27,8 @@ class QccMysql():
             passwd = 'admin',
             db = 'cebd_laoshan'
         )
+        ## -- 本地服务器 -- ##
+
         self.cur = self.conn.cursor()
 
     def inssts(self,ins): #插入操作
