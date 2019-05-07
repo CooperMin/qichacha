@@ -17,10 +17,10 @@ class PatentInfo():
 
     def get_com_id(self):
         sel = """
-        SELECT `com_id`,`com_name`,`status`,`count_patent`
+        SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
         FROM `com_info` 
         WHERE `origin` 
-        IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status` IS NULL AND `count_patent` != '0'
+        IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status_patent` IS NULL AND `count_patent` != '0'
         ORDER BY RAND() LIMIT 1;
         """
         result = db().selsts(sel)
@@ -78,9 +78,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        com_id = '3af639d1a46f356c27f3db1e86572405'
-        com_name = '京东方科技集团股份有限公司'
-        count_page = 500
+        com_id = '1ad3c9eea1707efaaf2647126b968c78'
+        com_name = '珠海市魅族科技有限公司'
+        count_page = 390
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
@@ -89,7 +89,7 @@ class PatentInfo():
             key = pt.search_key(com_name)
             index_url = value[3]
             count = 0
-            for page in range(278, count_page + 1): #临时代码，供单次补采数据【001】
+            for page in range(339, count_page + 1): #临时代码，供单次补采数据【001】
             # for page in range(1, count_page + 1):
                 page_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=assets&box=zhuanli'
                 hds = gh().header()
@@ -172,14 +172,14 @@ class PatentInfo():
                     UPDATE 
                     `com_info` 
                     SET
-                    `status` = 1
+                    `status_patent` = 1
                     WHERE 
                     `com_id` = "{com_id}" ;
                     """
                     db().updsts(upd)
             localtime = tm().get_localtime()  # 当前时间
             print('\n{1}\n{0}数据采集完成!{0}\n{1}'.format('+' * 7, '+' * 25))
-            print(f'当前时间：{localtime}')
+            print(f'当前时间：{localtime}\n')
             time.sleep(3)
 
 
@@ -190,7 +190,8 @@ if __name__ == '__main__':
     pt = PatentInfo()
     # pt.get_com_id()
     while 1 == 1:
-        time.sleep(3)
+        print('Loading......')
+        time.sleep(5)
         print('开始新一轮采集')
         pt.get_page_info()
 
