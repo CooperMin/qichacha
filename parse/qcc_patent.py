@@ -1,6 +1,10 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 
+"""
+企查查-专利信息
+"""
+
 
 import re
 import time
@@ -78,9 +82,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        com_id = '1ad3c9eea1707efaaf2647126b968c78'
-        com_name = '珠海市魅族科技有限公司'
-        count_page = 390
+        com_id = 'fb4fc94d42a051cfef9766524161d199'
+        com_name = '北京奇艺世纪科技有限公司'
+        count_page = 499
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
@@ -89,7 +93,8 @@ class PatentInfo():
             key = pt.search_key(com_name)
             index_url = value[3]
             count = 0
-            for page in range(339, count_page + 1): #临时代码，供单次补采数据【001】
+            start_time = tm().get_localtime() #当前时间
+            for page in range(371, count_page + 1): #临时代码，供单次补采数据【001】
             # for page in range(1, count_page + 1):
                 page_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=assets&box=zhuanli'
                 hds = gh().header()
@@ -145,6 +150,7 @@ class PatentInfo():
                         instructions = '-'
                     print('\n{0}--总第{1}条----{2}/{3}页--{0}\n'.format('-' * 9, count,page,count_page))
                     localtime = tm().get_localtime()  # 当前时间
+                    create_time = localtime
                     print(f'公司ID:{com_id} 当前时间：{localtime}')
                     print(f'序号:{patent_num}\n专利类型:{patent_type}\n公开（公告）号:{patent_pub_num}\n公开（公告）日期:{patent_pub_date}\n专利名称:{patent_name}\n'
                           f'专利页URL:{patent_url}\n申请号:{app_num}\n申请日期:{app_date}\n优先权日:{prio_date}\n优先权号:{prio_num}\n'
@@ -158,13 +164,13 @@ class PatentInfo():
                     `patent_name`,`patent_url`,`app_num`,`app_date`,`prio_date`,
                     `prio_num`,`inventor`,`applicant`,`agency`,`agent`,
                     `ipc`,`cpc`,`app_address`,`app_zip_code`,`abstract`,`abstract_photo`,
-                    `claim`,`instructions`)
+                    `claim`,`instructions`,`create_time`)
                     VALUES 
                     ("{com_id}","{patent_num}","{patent_type}","{patent_pub_num}","{patent_pub_date}",
                     "{patent_name}","{patent_url}","{app_num}","{app_date}","{prio_date}",
                     "{prio_num}","{inventor}","{applicant}","{agency}","{agent}",
                     "{ipc}","{cpc}","{app_address}","{app_zip_code}","{abstract}","{abstract_photo}",
-                    "{claim}","{instructions}");
+                    "{claim}","{instructions}","{create_time}");
                     """
                     db().inssts(ins)
 
@@ -190,7 +196,7 @@ if __name__ == '__main__':
     pt = PatentInfo()
     # pt.get_com_id()
     while 1 == 1:
-        print('Loading......')
+        print('Loading......\n')
         time.sleep(5)
         print('开始新一轮采集')
         pt.get_page_info()
