@@ -14,7 +14,7 @@ from lxml import etree
 from urllib.parse import quote
 
 from support.mysql import QccMysql as db
-from support.others import timeInfo as tm
+from support.others import TimeInfo as tm
 from support.headers import GeneralHeaders as gh
 
 class PatentInfo():
@@ -22,11 +22,19 @@ class PatentInfo():
     def get_com_id(self):
         sel = """
         SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
-        FROM `com_info` 
-        WHERE `origin` 
+        FROM `com_info`
+        WHERE `origin`
         IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status_patent` IS NULL AND `count_patent` != '0'
         ORDER BY RAND() LIMIT 1;
         """
+
+        # sel = """
+        # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
+        # FROM `com_info`
+        # WHERE `origin` = '崂山区虚拟现实企业90家数据相关'
+        # AND LENGTH(`com_id`) > 5 AND `status_patent` IS NULL AND `count_patent` != '0'
+        # ORDER BY RAND() LIMIT 1;
+        # """
         result = db().selsts(sel)
         if result == ():
             result = [None,None,None,None]
@@ -46,13 +54,10 @@ class PatentInfo():
         result = pt.get_com_id()
         com_id = result[0]
         com_name = result[1]
-
-        # com_id = '608886557bb9cf989ae600d1e8a94d40' #测试代码，采集时需注释掉
-        # com_name = '网易(杭州)网络有限公司' #测试代码，采集时需注释掉
         key = pt.search_key(com_name)
         status = result[2]
         if com_id == None:
-            value = [None,None,None]
+            value = [None,None,None,None]
         else:
             index_url = 'https://www.qichacha.com'
             com_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&tab=assets'
@@ -61,7 +66,6 @@ class PatentInfo():
             time.sleep(random.randint(1,2))
             res = requests.get(com_url,headers=hds).text
             tree = etree.HTML(res)
-
             count_patent = tree.xpath('//*[contains(text(),"专利信息") and @class="title"]/following-sibling::span[@class="tbadge"]/text()')[0].strip()
             if count_patent == '5000+':
                 count_page = 500
@@ -82,9 +86,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        com_id = 'fb4fc94d42a051cfef9766524161d199'
-        com_name = '北京奇艺世纪科技有限公司'
-        count_page = 499
+        # com_id = '2c720521ebc588377647fb5785c545ab'
+        # com_name = '北京经纬恒润科技有限公司'
+        # count_page = 142
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
@@ -94,7 +98,7 @@ class PatentInfo():
             index_url = value[3]
             count = 0
             start_time = tm().get_localtime() #当前时间
-            for page in range(371, count_page + 1): #临时代码，供单次补采数据【001】
+            for page in range(1, count_page + 1): #临时代码，供单次补采数据【001】
             # for page in range(1, count_page + 1):
                 page_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=assets&box=zhuanli'
                 hds = gh().header()
@@ -111,6 +115,7 @@ class PatentInfo():
                     patent_pub_date = content.xpath('td[4]/text()')[0]
                     patent_name = content.xpath('td[5]/a/text()')[0].strip()
                     patent_link = content.xpath('td[5]/a/@href')[0]
+                    patent_id = patent_link.split('_com_')[1]
                     patent_url = ''.join((index_url,patent_link))
                     time.sleep(random.randint(1,3))
                     res_dt = requests.get(patent_url,headers=hds).text
@@ -152,11 +157,12 @@ class PatentInfo():
                     localtime = tm().get_localtime()  # 当前时间
                     create_time = localtime
                     print(f'公司ID:{com_id} 当前时间：{localtime}')
+                    print(f'公司名称：{com_name}\n专利ID：{patent_id}')
                     print(f'序号:{patent_num}\n专利类型:{patent_type}\n公开（公告）号:{patent_pub_num}\n公开（公告）日期:{patent_pub_date}\n专利名称:{patent_name}\n'
                           f'专利页URL:{patent_url}\n申请号:{app_num}\n申请日期:{app_date}\n优先权日:{prio_date}\n优先权号:{prio_num}\n'
                           f'发明人:{inventor}\n申请（专利权）人:{applicant}\n代理机构:{agency}\n代理人:{agent}\nIPC分类号:{ipc}\n'
                           f'CPC分类号:{cpc}\n申请人地址:{app_address}\n申请人邮编:{app_zip_code}\n摘要:{abstract}\n摘要附图:{abstract_photo}\n'
-                          f'权利要求:{claim}\n说明书:{instructions}')
+                          f'权利要求:{claim}\n说明书:{instructions}\n')
                     ins = f"""
                     INSERT INTO  
                     `com_patent`
@@ -164,13 +170,13 @@ class PatentInfo():
                     `patent_name`,`patent_url`,`app_num`,`app_date`,`prio_date`,
                     `prio_num`,`inventor`,`applicant`,`agency`,`agent`,
                     `ipc`,`cpc`,`app_address`,`app_zip_code`,`abstract`,`abstract_photo`,
-                    `claim`,`instructions`,`create_time`)
+                    `claim`,`instructions`,`create_time`,`patent_id`)
                     VALUES 
                     ("{com_id}","{patent_num}","{patent_type}","{patent_pub_num}","{patent_pub_date}",
                     "{patent_name}","{patent_url}","{app_num}","{app_date}","{prio_date}",
                     "{prio_num}","{inventor}","{applicant}","{agency}","{agent}",
                     "{ipc}","{cpc}","{app_address}","{app_zip_code}","{abstract}","{abstract_photo}",
-                    "{claim}","{instructions}","{create_time}");
+                    "{claim}","{instructions}","{create_time}","{patent_id}");
                     """
                     db().inssts(ins)
 
