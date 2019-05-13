@@ -1,6 +1,9 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
 import time
+import re
+
+from urllib.parse import quote
 
 class TimeInfo():
     def get_localtime(self):

@@ -14,7 +14,7 @@ class GeneralHeaders():
             'IE11':'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
         }
         ua_li = list(ua_dict.keys())
-        name = random.choice(ua_li)  # 随机获取一条cookie值
+        name = random.choice(ua_li)  # 随机获取一条UA
         ua = ua_dict[name]
         return ua
 
