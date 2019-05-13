@@ -10,10 +10,12 @@ import re
 import time
 import random
 import requests
+
 from lxml import etree
 from urllib.parse import quote
 
 from support.mysql import QccMysql as db
+from support.others import DealKey as dk
 from support.others import TimeInfo as tm
 from support.headers import GeneralHeaders as gh
 
@@ -54,7 +56,7 @@ class PatentInfo():
         result = pt.get_com_id()
         com_id = result[0]
         com_name = result[1]
-        key = pt.search_key(com_name)
+        key = dk().search_key(com_name)
         status = result[2]
         if com_id == None:
             value = [None,None,None,None]
@@ -96,19 +98,19 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        com_id = '6834e9f4d5f89affcc5c903a6d899631'
-        com_name = '深圳市冠旭电子股份有限公司'
-        count_page = 89
+        # com_id = '6834e9f4d5f89affcc5c903a6d899631'
+        # com_name = '深圳市冠旭电子股份有限公司'
+        # count_page = 89
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
             pass
         else:
-            key = pt.search_key(com_name)
+            key = dk().search_key(com_name)
             index_url = value[3]
             count = 0
             start_time = tm().get_localtime() #当前时间
-            for page in range(67, count_page + 1): #临时代码，供单次补采数据【001】
+            for page in range(1, count_page + 1): #临时代码，供单次补采数据【001】
             # for page in range(1, count_page + 1):
             #     if page == 1:
             #         page_url = f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={com_name}&tab=assets'
@@ -238,5 +240,3 @@ if __name__ == '__main__':
         time.sleep(5)
         print('开始新一轮采集')
         pt.get_page_info()
-
-    # PatentInfo().getinfo()
