@@ -4,15 +4,11 @@
 """
 企查查-专利信息
 """
-
-
-import re
 import time
 import random
 import requests
 
 from lxml import etree
-from urllib.parse import quote
 
 from support.mysql import QccMysql as db
 from support.others import DealKey as dk
@@ -43,13 +39,6 @@ class PatentInfo():
         else:
             result = result[0]
         return result
-
-    def search_key(self,key): #根据关键词进行检索
-        zh_model = re.compile(u'[\u4e00-\u9fa5]')
-        match = zh_model.search(key)
-        if match: #判断是否包含汉字，如果包含则对汉字做处理
-            key = quote(key)
-        return key
 
     def get_page_count(self): #获取页面页数
         pt = PatentInfo()
@@ -98,9 +87,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        # com_id = '6834e9f4d5f89affcc5c903a6d899631'
-        # com_name = '深圳市冠旭电子股份有限公司'
-        # count_page = 89
+        # com_id = '69d5e93f855a769446c00c4426f35aa6'
+        # com_name = '华勤通讯技术有限公司'
+        # count_page = 142
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
