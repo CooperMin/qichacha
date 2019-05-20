@@ -3,9 +3,8 @@
 """
 调用mysql服务，执行插入/更新/查询操作
 """
-
-import pymysql
 import time
+import pymysql
 
 class QccMysql():
     def __init__(self): #

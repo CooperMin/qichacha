@@ -87,9 +87,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        # com_id = '69d5e93f855a769446c00c4426f35aa6'
-        # com_name = '华勤通讯技术有限公司'
-        # count_page = 142
+        com_id = '6129f29192de208800c7b5d23486a154'
+        com_name = '乐融致新电子科技(天津)有限公司'
+        count_page = 298
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
@@ -99,7 +99,7 @@ class PatentInfo():
             index_url = value[3]
             count = 0
             start_time = tm().get_localtime() #当前时间
-            for page in range(1, count_page + 1): #临时代码，供单次补采数据【001】
+            for page in range(148, count_page + 1): #临时代码，供单次补采数据【001】
             # for page in range(1, count_page + 1):
             #     if page == 1:
             #         page_url = f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={com_name}&tab=assets'
@@ -218,7 +218,13 @@ class PatentInfo():
             time.sleep(3)
 
 
-
+    def run(self):
+        pt = PatentInfo()
+        while 1 == 1:
+            print('Loading......\n')
+            time.sleep(5)
+            print('开始新一轮采集')
+            pt.get_page_info()
 
 
 if __name__ == '__main__':

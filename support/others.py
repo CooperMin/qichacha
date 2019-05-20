@@ -1,8 +1,7 @@
 #! /usr/bin/env python3
 # -*- coding:utf-8 -*-
-import time
 import re
-
+import time
 from urllib.parse import quote
 
 class TimeInfo():

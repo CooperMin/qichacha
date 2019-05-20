@@ -85,7 +85,7 @@ class Credit():
                 else:
                     tree = etree.HTML(res)
                     try:
-                        count_execued = tree.xpath(f'//div[@class="company-nav-items"]/span[contains(text(),"被执行人")]/span/text()|//div[@class="company-nav-items"]/a[@data-pos="zhixinglist"]/span/text()')[0]
+                        count_execued = tree.xpath('//div[@class="company-nav-items"]/span[contains(text(),"被执行人")]/span/text()|//div[@class="company-nav-items"]/a[@data-pos="zhixinglist"]/span/text()')[0]
                         count_execued = int(count_execued)
                     except:
                         count_execued = -1

@@ -59,9 +59,9 @@ class FaithExecued():
     def faith_execued_judge(self): #判断失信被执行人信息，如果有记录则执行解析，返回该公司相关信息
         global com_id,com_name
         fe = FaithExecued()
-        count_execued = 0
+        count_breach_of_faith_execued = 0
         count = 0
-        while count_execued == 0 or count_execued == -1:
+        while count_breach_of_faith_execued == 0 or count_breach_of_faith_execued == -1:
             result = fe.get_com_id()
             com_id = result[0]
             com_name = result[1]
@@ -74,7 +74,7 @@ class FaithExecued():
                 time.sleep(random.randint(3,5))
                 res = requests.get(com_url, headers=hds).text
                 if '<script>window.location.href' in res:
-                    print('访问频繁，需验证！{execued_judge}')
+                    print('访问频繁，需验证！{faith_execued_judge}')
                     input('暂停')
                 elif '<script>location.href="/user_login"</script>' in res:
                     print('Cookie失效，需更换！{faith_execued_judge}')
@@ -85,16 +85,16 @@ class FaithExecued():
                 else:
                     tree = etree.HTML(res)
                     try:
-                        count_breach_of_faith_execued = tree.xpath(f'//div[@class="company-nav-items"]/span[contains(text(),"失信信息")]/span/text()|//div[@class="company-nav-items"]/a[@data-pos="shixinlist"]/span/text()')[0]
+                        count_breach_of_faith_execued = tree.xpath('//div[@class="company-nav-items"]/span[contains(text(),"失信信息")]/span/text()|//div[@class="company-nav-items"]/a[@data-pos="shixinlist"]/span/text()')[0]
                         count_breach_of_faith_execued = int(count_breach_of_faith_execued)
                     except:
                         count_breach_of_faith_execued = -1
                     localtime = tm().get_localtime()  # 当前时间
                     print(localtime)
                     if count_breach_of_faith_execued == 0 or coucount_breach_of_faith_execuednt_execued == -1:
-                        print(f'计数器：{count}\n公司ID:{com_id}\n被执行人信息条数：无')
+                        print(f'计数器：{count}\n公司ID:{com_id}\n失信被执行人信息条数：无')
                     else:
-                        print(f'计数器：{count}\n公司ID:{com_id}\n被执行人信息条数：{count_breach_of_faith_execued}')
+                        print(f'计数器：{count}\n公司ID:{com_id}\n失信被执行人信息条数：{count_breach_of_faith_execued}')
                     cd.upd_status_execued(com_id,count_breach_of_faith_execued)
         return com_id,com_name,count_breach_of_faith_execued
 
