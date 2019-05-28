@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="366d5eca-aeaf-4211-a3a5-14bce27ede9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_breach_of_faith_execued.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parse/com_common/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parse/com_common/common.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parse/com_expand/qcc_recruit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parse/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parse/com_expand/qcc_credit_execued.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_execued.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parse/com_expand/qcc_patent.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/com_expand/qcc_patent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_adm_license.py" beforeDir="false" afterPath="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_adm_license.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/support/cookies.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/cookies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/support/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/support/mysql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/detail" beforeDir="false" afterPath="$PROJECT_DIR$/test/detail" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_chaopin.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_chaopin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/zhixing.html" beforeDir="false" afterPath="$PROJECT_DIR$/test/zhixing.html" afterDir="false" />
     </list>
     <list id="d68eb801-ba04-440c-adec-3314eccaf34e" name="Igonre" comment="Igonre">
@@ -31,7 +35,23 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cebd_laoshan: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FavoritesManager">
@@ -42,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/support/cookies.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="25" column="940" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="940" />
+            <state relative-caret-position="163">
+              <caret line="13" column="940" selection-start-line="13" selection-start-column="940" selection-end-line="13" selection-end-column="940" />
               <folding>
                 <element signature="e#47#58#0" expanded="true" />
               </folding>
@@ -52,43 +72,61 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/zhixing.html">
+        <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_recruit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="259">
+              <caret line="179" column="24" selection-start-line="179" selection-start-column="24" selection-end-line="179" selection-end-column="24" />
+              <folding>
+                <element signature="e#67#78#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/support/mysql.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="76" selection-start-line="76" selection-end-line="88" selection-end-column="56" />
+              <folding>
+                <element signature="e#78#89#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/detail">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4192">
+              <caret line="262" column="3" lean-forward="true" selection-start-line="4" selection-end-line="262" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/support/headers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="16">
+              <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_breach_of_faith_execued.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-              <folding>
-                <element signature="e#66#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/doc/qcc_account">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="14" column="15" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_execued.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="124" column="50" lean-forward="true" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
-              <folding>
-                <element signature="e#69#80#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="48">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -96,50 +134,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/test_chaopin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_patent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="698">
-              <caret line="214" column="12" selection-start-line="214" selection-start-column="12" selection-end-line="217" selection-end-column="25" />
+            <state relative-caret-position="317">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
               <folding>
-                <element signature="e#68#79#0" expanded="true" />
+                <element signature="e#48#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/com_basic/qcc_kw_search.py">
+        <entry file="file://$PROJECT_DIR$/parse/com_common/common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/support/others.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-              <folding>
-                <element signature="e#47#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parse/com_basic/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+            <state relative-caret-position="608">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
@@ -161,6 +169,10 @@
       <find>申请（专利权）人</find>
       <find>被执行人</find>
       <find>company-nav-items</find>
+      <find>工商局</find>
+      <find>河北省卫生和计划生育委员会</find>
+      <find>信用中国</find>
+      <find>招聘职位</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,36 +192,47 @@
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/support/proxy.py" />
-        <option value="$PROJECT_DIR$/support/mysql.py" />
         <option value="$PROJECT_DIR$/parse/qcc_trademark.py" />
         <option value="$PROJECT_DIR$/parse/qcc_credit.py" />
         <option value="$PROJECT_DIR$/parse/qcc_credit/__init__.py" />
         <option value="$PROJECT_DIR$/doc/__init__.py" />
         <option value="$PROJECT_DIR$/test/__init__.py" />
         <option value="$PROJECT_DIR$/parse/qcc_credit/qcc_credit.py" />
-        <option value="$PROJECT_DIR$/support/headers.py" />
-        <option value="$PROJECT_DIR$/support/others.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/e1caec32-ee41-4819-a770-3fc10b946fc8/console_1.sql" />
-        <option value="$PROJECT_DIR$/test/test_chaopin.py" />
         <option value="$PROJECT_DIR$/test/chaopin.html" />
-        <option value="$PROJECT_DIR$/doc/qcc_account" />
         <option value="$PROJECT_DIR$/parse/qcc_credit/qcc_credit_execued.py" />
         <option value="$PROJECT_DIR$/parse/qcc_credit/com_expand/__init__.py" />
         <option value="$PROJECT_DIR$/parse/qcc_patent.py" />
         <option value="$PROJECT_DIR$/parse/com_basic/__init__.py" />
         <option value="$PROJECT_DIR$/parse/com_basic/qcc_kw_search.py" />
         <option value="$PROJECT_DIR$/parse/__init__.py" />
-        <option value="$PROJECT_DIR$/support/cookies.py" />
         <option value="$PROJECT_DIR$/parse/com_expand/qcc_credit/com_credit_breach_of_faith_executed.py" />
         <option value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_breach_of_faith_executed.py" />
-        <option value="$PROJECT_DIR$/parse/com_expand/qcc_patent.py" />
-        <option value="$PROJECT_DIR$/test/zhixing.html" />
-        <option value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_breach_of_faith_execued.py" />
+        <option value="$PROJECT_DIR$/start.py" />
         <option value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_execued.py" />
+        <option value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_breach_of_faith_execued.py" />
+        <option value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_adm_license_bc.py" />
+        <option value="$PROJECT_DIR$/support/others.py" />
+        <option value="$PROJECT_DIR$/support/headers.py" />
+        <option value="$PROJECT_DIR$/doc/company_list" />
+        <option value="$PROJECT_DIR$/parse/com_basic/qcc_base.py" />
+        <option value="$PROJECT_DIR$/parse/com_expand/qcc_patent.py" />
+        <option value="$PROJECT_DIR$/parse/com_common/__init__.py" />
+        <option value="$PROJECT_DIR$/test/zhixing.html" />
+        <option value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_adm_license.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/e1caec32-ee41-4819-a770-3fc10b946fc8/console.sql" />
+        <option value="$PROJECT_DIR$/parse/com_common/common.py" />
+        <option value="$PROJECT_DIR$/test/test.html" />
+        <option value="$PROJECT_DIR$/support/mysql.py" />
+        <option value="$PROJECT_DIR$/parse/com_expand/qcc_recruit.py" />
+        <option value="$PROJECT_DIR$/test/detail" />
+        <option value="$PROJECT_DIR$/test/test_chaopin.py" />
+        <option value="$PROJECT_DIR$/support/cookies.py" />
+        <option value="$PROJECT_DIR$/doc/qcc_account" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="177" />
     <option name="y" value="100" />
     <option name="width" value="1417" />
@@ -231,7 +254,18 @@
             <path>
               <item name="qichacha" type="b2602c69:ProjectViewProjectNode" />
               <item name="qichacha" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qichacha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qichacha" type="462c0819:PsiDirectoryNode" />
               <item name="parse" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qichacha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qichacha" type="462c0819:PsiDirectoryNode" />
+              <item name="parse" type="462c0819:PsiDirectoryNode" />
+              <item name="com_common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="qichacha" type="b2602c69:ProjectViewProjectNode" />
@@ -245,6 +279,16 @@
               <item name="parse" type="462c0819:PsiDirectoryNode" />
               <item name="com_expand" type="462c0819:PsiDirectoryNode" />
               <item name="qcc_credit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qichacha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qichacha" type="462c0819:PsiDirectoryNode" />
+              <item name="support" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="qichacha" type="b2602c69:ProjectViewProjectNode" />
+              <item name="qichacha" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -288,8 +332,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.qcc_credit_breach_of_faith_execued">
-    <configuration name="others" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.test_chaopin">
+    <configuration name="qcc_base" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="qichacha" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -297,12 +341,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/support" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse/com_basic" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/support/others.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/com_basic/qcc_base.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -311,29 +355,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="qcc_credit" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="qichacha" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse/qcc_credit" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/qcc_credit/com_expand/qcc_credit_execued.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="qcc_credit_breach_of_faith_execued" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="qcc_credit_adm_license" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="qichacha" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -346,7 +368,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_breach_of_faith_execued.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_adm_license.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -355,7 +377,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="qcc_patent" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="qcc_recruit" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="qichacha" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -363,12 +385,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/parse/com_expand" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/com_expand/qcc_patent.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/parse/com_expand/qcc_recruit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="qichacha" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -401,16 +445,15 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.qcc_patent" />
-        <item itemvalue="Python.qcc_credit_breach_of_faith_execued" />
-        <item itemvalue="Python.qcc_credit" />
         <item itemvalue="Python.test_chaopin" />
-        <item itemvalue="Python.others" />
+        <item itemvalue="Python.qcc_recruit" />
+        <item itemvalue="Python.start" />
+        <item itemvalue="Python.qcc_base" />
+        <item itemvalue="Python.qcc_credit_adm_license" />
       </list>
     </recent_temporary>
   </component>
   <component name="StructureViewFactory">
-    <option name="AUTOSCROLL_MODE" value="false" />
     <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS" />
   </component>
   <component name="SvnConfiguration">
@@ -429,7 +472,11 @@
       <workItem from="1556507983478" duration="14552000" />
       <workItem from="1556594001189" duration="9856000" />
       <workItem from="1556634111529" duration="154881000" />
-      <workItem from="1557561636207" duration="47320000" />
+      <workItem from="1557561636207" duration="122473000" />
+      <workItem from="1558409319853" duration="19314000" />
+      <workItem from="1558515320990" duration="10817000" />
+      <workItem from="1558681402119" duration="19684000" />
+      <workItem from="1558945041323" duration="4016000" />
     </task>
     <task id="LOCAL-00001" summary="添加说明信息">
       <created>1557025275008</created>
@@ -480,11 +527,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557740816872</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="更新了企查查-信用/征信-失信被执行人采集代码">
+      <created>1557825837076</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1557825837076</updated>
+    </task>
+    <task id="LOCAL-00009" summary="更新了企查查-信用/征信-失信被执行人采集代码">
+      <created>1558320101778</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1558320101778</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245589000" />
+    <option name="totallyTimeSpent" value="374573000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -496,23 +557,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49470899" visible="true" weight="0.17826618" />
-      <window_info id="Structure" order="1" sideWeight="0.505291" side_tool="true" visible="true" weight="0.17826618" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49130434" visible="true" weight="0.18559219" />
+      <window_info id="Structure" order="1" sideWeight="0.50869566" side_tool="true" visible="true" weight="0.18559219" />
       <window_info id="Favorites" order="2" sideWeight="0.5017182" side_tool="true" weight="0.12332112" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.498779" weight="0.6877551" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.498779" visible="true" weight="0.6142857" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.498779" visible="true" weight="0.53061223" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4981685" weight="0.58979595" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32959184" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959184" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32959184" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.60918367" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" weight="0.58979595" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32959184" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32959184" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32959184" />
@@ -523,20 +584,20 @@
       <window_info anchor="right" id="Database" order="4" weight="0.32967034" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49608356" visible="true" weight="0.17826618" />
-      <window_info id="Structure" order="1" sideWeight="0.50391644" side_tool="true" weight="0.17826618" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49387756" visible="true" weight="0.18192919" />
+      <window_info id="Structure" order="1" sideWeight="0.50612247" side_tool="true" visible="true" weight="0.18192919" />
       <window_info id="Favorites" order="2" sideWeight="0.5017182" side_tool="true" weight="0.12332112" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.498779" weight="0.6877551" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.498779" visible="true" weight="0.60918367" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.498779" weight="0.53061223" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4981685" weight="0.58979595" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32959184" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32959184" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32959184" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.60918367" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" weight="0.58979595" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32959184" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32959184" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32959184" />
@@ -557,14 +618,19 @@
     <MESSAGE value="征信/信用-被执行人信息代码编辑中" />
     <MESSAGE value="提交征信/信用-被执行人 部分代码，&#10;以及其它部分的代码更新" />
     <MESSAGE value="修改了项目文件结构" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了项目文件结构" />
+    <MESSAGE value="更新了企查查-信用/征信-失信被执行人采集代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了企查查-信用/征信-失信被执行人采集代码" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/qichacha$qcc_patent.coverage" NAME="qcc_patent Coverage Results" MODIFIED="1557819539586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parse" />
+    <SUITE FILE_PATH="coverage/qichacha$qcc_patent.coverage" NAME="qcc_patent Coverage Results" MODIFIED="1557833617222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parse" />
+    <SUITE FILE_PATH="coverage/qichacha$start.coverage" NAME="start Coverage Results" MODIFIED="1558319970205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/qichacha$qcc_recruit.coverage" NAME="qcc_recruit Coverage Results" MODIFIED="1558332841230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parse/com_expand" />
     <SUITE FILE_PATH="coverage/qichacha$qcc_credit.coverage" NAME="qcc_credit Coverage Results" MODIFIED="1557735718166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parse/qcc_credit" />
+    <SUITE FILE_PATH="coverage/qichacha$qcc_credit_adm_license.coverage" NAME="qcc_credit_adm_license Coverage Results" MODIFIED="1557990341347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parse/com_expand/qcc_credit" />
+    <SUITE FILE_PATH="coverage/qichacha$qcc_base.coverage" NAME="qcc_base Coverage Results" MODIFIED="1558062885946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parse/com_basic" />
     <SUITE FILE_PATH="coverage/qichacha$cookies.coverage" NAME="cookies Coverage Results" MODIFIED="1556425000737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/support" />
     <SUITE FILE_PATH="coverage/qichacha$qcc_credit_breach_of_faith_execued.coverage" NAME="qcc_credit_breach_of_faith_execued Coverage Results" MODIFIED="1557816267135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parse/com_expand/qcc_credit" />
-    <SUITE FILE_PATH="coverage/qichacha$test_chaopin.coverage" NAME="test_chaopin Coverage Results" MODIFIED="1557568684427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/qichacha$test_chaopin.coverage" NAME="test_chaopin Coverage Results" MODIFIED="1558945542251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/qichacha$others.coverage" NAME="others Coverage Results" MODIFIED="1557027425408" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/support" />
   </component>
   <component name="editorHistoryManager">
@@ -588,74 +654,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="268" column="24" lean-forward="true" selection-start-line="268" selection-start-column="24" selection-end-line="268" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#a#0;n#li#3;n#ul#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#li#3;n#ul#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#8;n#ul#1;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#td#1;n#tr#9;n#tbody#0;n#table#0;n#section#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#1;n#section#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#1;n#section#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#1;n#section#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#54815#54821#0" expanded="true" />
-            <element signature="e#54939#54945#0" expanded="true" />
-            <element signature="e#54982#54988#0" expanded="true" />
-            <element signature="e#55183#55189#0" expanded="true" />
-            <element signature="e#55189#55195#0" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#1;n#div#1;n#div#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#2;n#div#1;n#div#0;n#div#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#56357#56364#1" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#2;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#3;n#div#1;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#61627#61634#1" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#section#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#62747#62754#1" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#section#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#3;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#64577#64584#1" expanded="true" />
-            <element signature="n#style#0;n#input#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#71439#71446#1" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#6;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/support/zhima_api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="223" selection-start-line="223" selection-end-line="223" />
-          <folding>
-            <element signature="e#95#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-293" />
-      </provider>
-    </entry>
-    <entry file="das://e1caec32-ee41-4819-a770-3fc10b946fc8/schema/cebd_laoshan/table/com_info">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
       </provider>
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/sessions.py">
@@ -672,9 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e1caec32-ee41-4819-a770-3fc10b946fc8/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/requests/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -686,40 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="55" selection-start-column="55" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/OpenSSL/SSL.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="1821" selection-start-line="1821" selection-end-line="1821" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/chaopin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/support/mysql.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="27" selection-end-column="31" />
-          <folding>
-            <element signature="e#79#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/support/headers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-          <folding>
-            <element signature="e#48#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,20 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parse/com_expand/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -793,27 +743,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/support/cookies.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/OpenSSL/SSL.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="25" column="940" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="940" />
-          <folding>
-            <element signature="e#47#58#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="117">
+          <caret line="774" selection-start-line="774" selection-end-line="774" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_chaopin.py">
+    <entry file="file://$PROJECT_DIR$/support/others.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        <state relative-caret-position="48">
+          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/qcc_account">
+    <entry file="file://$PROJECT_DIR$/doc/company_list">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="15" />
+        <state relative-caret-position="352">
+          <caret line="22" column="14" lean-forward="true" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -824,50 +771,300 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/zhixing.html">
+    <entry file="file://$PROJECT_DIR$/start.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_execued.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="124" column="50" lean-forward="true" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
+        <state relative-caret-position="144">
+          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
           <folding>
-            <element signature="e#69#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/support/others.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding>
-            <element signature="e#47#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_patent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="214" column="12" selection-start-line="214" selection-start-column="12" selection-end-line="217" selection-end-column="25" />
-          <folding>
-            <element signature="e#68#79#0" expanded="true" />
+            <element signature="e#47#103#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_breach_of_faith_execued.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        <state relative-caret-position="2624">
+          <caret line="164" column="60" selection-start-line="152" selection-start-column="24" selection-end-line="164" selection-end-column="60" />
           <folding>
             <element signature="e#66#77#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_expand/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://e1caec32-ee41-4819-a770-3fc10b946fc8/schema/cebd_laoshan/table/com_info">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://e1caec32-ee41-4819-a770-3fc10b946fc8/schema/cebd_laoshan/table/com_info.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-353">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_patent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="53" column="40" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_basic/qcc_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="e#47#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_common/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/zhixing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#326#332#0" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#553#559#0" expanded="true" />
+            <element signature="n#style#0;n#a#2;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#778#784#0" expanded="true" />
+            <element signature="n#style#0;n#a#3;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#996#1002#0" expanded="true" />
+            <element signature="n#style#0;n#a#4;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#1223#1229#0" expanded="true" />
+            <element signature="n#style#0;n#a#5;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#1388#1394#0" expanded="true" />
+            <element signature="n#style#0;n#a#6;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#1613#1619#0" expanded="true" />
+            <element signature="n#style#0;n#a#7;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#1832#1838#0" expanded="true" />
+            <element signature="n#style#0;n#a#8;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#2053#2059#0" expanded="true" />
+            <element signature="n#style#0;n#a#9;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#2275#2281#0" expanded="true" />
+            <element signature="n#style#0;n#a#10;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#2501#2507#0" expanded="true" />
+            <element signature="n#style#0;n#a#11;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#2731#2737#0" expanded="true" />
+            <element signature="n#style#0;n#a#12;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#2892#2898#0" expanded="true" />
+            <element signature="n#style#0;n#a#13;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#3052#3058#0" expanded="true" />
+            <element signature="n#style#0;n#a#14;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#3212#3218#0" expanded="true" />
+            <element signature="n#style#0;n#a#15;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#3436#3442#0" expanded="true" />
+            <element signature="n#style#0;n#a#16;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#3659#3665#0" expanded="true" />
+            <element signature="n#style#0;n#a#17;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#3881#3887#0" expanded="true" />
+            <element signature="n#style#0;n#a#18;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="e#4041#4047#0" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#4;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#8;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="e#32374#32380#0" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#9;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#10;n#tbody#0;n#table#0;n#section#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#section#5;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#section#5;n#!!top" expanded="true" />
+            <element signature="e#41016#41022#0" expanded="true" />
+            <element signature="e#41022#41028#0" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#2;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#4;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#6;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#8;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#10;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#12;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#14;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#16;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#18;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#20;n#table#0;n#section#8;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#4;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#8;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#1;n#tr#9;n#tbody#0;n#table#0;n#section#9;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#section#10;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#section#10;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#section#10;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#section#11;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#section#11;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#section#12;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#section#16;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#section#17;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#18;n#!!top" expanded="true" />
+            <element signature="e#99198#99205#1" expanded="true" />
+            <element signature="e#99722#99729#1" expanded="true" />
+            <element signature="e#100343#100350#1" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#5;n#!!top" expanded="true" />
+            <element signature="e#100850#100857#1" expanded="true" />
+            <element signature="e#101373#101380#1" expanded="true" />
+            <element signature="e#101867#101874#1" expanded="true" />
+            <element signature="e#102364#102371#1" expanded="true" />
+            <element signature="e#102856#102863#1" expanded="true" />
+            <element signature="e#103310#103317#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_adm_license.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="245" column="29" selection-start-line="245" selection-start-column="29" selection-end-line="245" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/chaopin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e1caec32-ee41-4819-a770-3fc10b946fc8/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="125" column="2" lean-forward="true" selection-start-line="125" selection-start-column="2" selection-end-line="125" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/support/zhima_api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="77" column="51" lean-forward="true" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
+          <folding>
+            <element signature="e#95#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/pymysql/cursors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2492">
+          <caret line="150" column="8" selection-start-line="150" selection-start-column="8" selection-end-line="150" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_credit/qcc_credit_execued.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="128" column="44" lean-forward="true" selection-start-line="126" selection-start-column="12" selection-end-line="128" selection-end-column="44" />
+          <folding>
+            <element signature="e#69#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/support/headers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_common/common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/detail">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4192">
+          <caret line="262" column="3" lean-forward="true" selection-start-line="4" selection-end-line="262" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/support/mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="76" selection-start-line="76" selection-end-line="88" selection-end-column="56" />
+          <folding>
+            <element signature="e#78#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test_chaopin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#48#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parse/com_expand/qcc_recruit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="179" column="24" selection-start-line="179" selection-start-column="24" selection-end-line="179" selection-end-column="24" />
+          <folding>
+            <element signature="e#67#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/support/cookies.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="13" column="940" selection-start-line="13" selection-start-column="940" selection-end-line="13" selection-end-column="940" />
+          <folding>
+            <element signature="e#47#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/qcc_account">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="14" />
         </state>
       </provider>
     </entry>

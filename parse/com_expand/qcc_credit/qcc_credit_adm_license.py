@@ -26,11 +26,11 @@ class AdmLicense():
         """
 
         # 测试sql#
-        sel = """
-        SELECT `com_id`, `com_name`
-        FROM `com_info`
-        WHERE com_id = '299eee201318f0283f086b4847d69fc7';
-        """
+        # sel = """
+        # SELECT `com_id`, `com_name`
+        # FROM `com_info`
+        # WHERE com_id = '299eee201318f0283f086b4847d69fc7';
+        # """
         # 测试sql#
 
         result = db().selsts(sel)
@@ -250,7 +250,7 @@ class AdmLicenseBc(AdmLicense):
         print(f'当前时间：{localtime}\n')
         time.sleep(3)
 
-class AdmLicenseCc(AdmLicense):
+class AdmLicenseCc(AdmLicense): #行政许可[信用中国]
     def cc_judge(self):
         global com_id,com_name
         alb = AdmLicenseCc()
@@ -326,21 +326,6 @@ class AdmLicenseCc(AdmLicense):
             for nbr, content in enumerate(content_li, 1):
                 count += 1
                 try:
-                    """
-                    com_id	公司ID
-                    license_num	序号
-                    dec_book_num	决定文书号
-                    license_office	许可机关
-                    dec_date	决定日期
-                    
-                    project_name	项目名称
-                    license_status	许可状态
-                    license_content	许可内容
-                    expire_time	截止时间
-                    approval_category	审批类别
-                    area	地域
-                    create_time	创建/入库时间
-                    """
                     license_num = content.xpath('td[1]/text()')[0]
                     dec_book_num = content.xpath('td[2]/text()')[0]
                     license_office = content.xpath('td[3]/text()')[0]

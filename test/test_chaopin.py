@@ -30,6 +30,29 @@ from support.headers import GeneralHeaders as gh
 # res = requests.get(com_url,headers=hds).text
 # print(res)
 
-
-
-
+# tim = time.strptime('2019-05-19','%Y-%m-%d')
+# tim = round(time.mktime(tim))
+#
+# print(tim)
+# index = 'https://www.qichacha.com/company_getinfos?'
+# header = gh().header()
+# header.update({'Referer': 'https://www.qichacha.com/firm_88fc0b1d105b03d0bfa1edf37cb9e961.html'})
+# para = {
+# 'unique':'88fc0b1d105b03d0bfa1edf37cb9e961',
+# 'companyname':'TCL集团股份有限公司',
+# 'p':1,
+# 'tab':'run',
+# 'box':'job'}
+# res = requests.get(index,params=para,headers=header)
+# content = res.text
+# url = res.url
+# print(url)
+for num in range(1,260):
+    num = str(num)
+    if int(num) <10:
+        num = '20000'+num
+    elif int(num) <100:
+        num = '2000'+num
+    else:
+        num = '200'+num
+    print(num)

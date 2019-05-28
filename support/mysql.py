@@ -45,7 +45,6 @@ class QccMysql():
 
     def updsts(self,upd): #更新操作
         try:
-            # print(upd)
             self.cur.execute(upd)
             self.conn.commit()
             self.close()
@@ -72,6 +71,22 @@ class QccMysql():
 
     def close(self): #关闭连接
         self.conn.close()
+
+
+
+CREATE TABLE `com_credit_execued` (
+  `com_id` char(32) NOT NULL COMMENT '公司ID',
+  `rc_num` varchar(32) NOT NULL COMMENT '序号',
+  `case_id` char(64) NOT NULL COMMENT '案例ID',
+  `case_num` varchar(32) NOT NULL COMMENT '案号',
+  `filing_time` varchar(32) NOT NULL COMMENT '立案时间',
+  `court_of_exec` varchar(128) NOT NULL COMMENT '执行法院',
+  `exec_obj` varchar(32) NOT NULL COMMENT '执行标的',
+  `exec_person` varchar(128) NOT NULL COMMENT '被执行人',
+  `occ` varchar(32) DEFAULT NULL COMMENT '身份证号/组织机构代码',
+  `create_time` datetime DEFAULT NULL COMMENT '创建/入库时间',
+  PRIMARY KEY (`com_id`,`case_num`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='公司-被执行人信息'
 
 
 
