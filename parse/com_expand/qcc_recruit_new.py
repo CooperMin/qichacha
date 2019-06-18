@@ -33,7 +33,7 @@ class RecruitInfo():
         # """
         sel = """
         SELECT com_id,com_name FROM com_info
-        WHERE area ='上海市'
+        WHERE area ='北京市'
         AND origin is not null
         AND chain ='虚拟现实'
         AND status_recruit is null
@@ -41,7 +41,7 @@ class RecruitInfo():
         """
         # sel = """
         # SELECT com_id,com_name FROM `com_info`
-        # WHERE com_id = 'bfcd4f4c8b4dd119556e518c9167b8fd'
+        # WHERE com_id = 'b3f396475b5060914681b6c9f13d1577'
         # """
         return sel
 
@@ -50,6 +50,7 @@ class RecruitInfo():
         return result #返回元祖数据
 
     def count_rc_judge( self,com_id): #根据公司首页招聘字段判断招聘数量，模糊判断，需做二次判断
+        global count_rc
         if com_id == None:
             count_rc = 0
         else:
@@ -170,7 +171,6 @@ class RecruitInfo():
         rc = RecruitInfo()
         count_cond = rc.verify_cond()
         count = 0
-        print('\n{2}\n{1}剩余{0}家企业招聘数据待采集！{1}\n{2}\n'.format(count_cond, '*' * 20, '*' * 63))
         while count_cond > 0:
             print('Loading......\n')
             time.sleep(5)
@@ -214,7 +214,7 @@ class RecruitInfo():
         SELECT count(*) FROM `com_info`
         WHERE origin IS NOT NULL
         AND status_recruit IS NULL
-        AND area = '上海市'
+        AND area = '北京市'
         AND chain = '虚拟现实'
         AND LENGTH(com_id) > 8;
         """

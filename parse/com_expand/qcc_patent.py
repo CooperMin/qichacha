@@ -18,14 +18,24 @@ from support.headers import GeneralHeaders as gh
 class PatentInfo():
 
     def get_com_id(self):
-        sel = """
+        # sel = """
+        # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
+        # FROM `com_info`
+        # WHERE `origin`
+        # IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status_patent` IS NULL AND `count_patent` != '0'
+        # ORDER BY RAND() LIMIT 1;
+        # """
+        sel ="""
         SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
         FROM `com_info`
-        WHERE `origin`
-        IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status_patent` IS NULL AND `count_patent` != '0'
+        WHERE `com_id` IN
+        (
+        '82e93b9b4f272e8d9926a9af66931277',
+        'e0f20217dc6a2463b073e906aa36bc72'
+        ) 
+        AND `status_patent` IS NULL AND `count_patent` != '0'
         ORDER BY RAND() LIMIT 1;
         """
-
         # sel = """
         # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
         # FROM `com_info`
@@ -67,7 +77,10 @@ class PatentInfo():
                 input('程序暂停运行！')
             else:
                 tree = etree.HTML(res)
-                count_patent = tree.xpath('//*[contains(text(),"专利信息") and @class="title"]/following-sibling::span[@class="tbadge"]/text()')[0].strip()
+                try:
+                    count_patent = tree.xpath('//*[contains(text(),"专利信息") and @class="title"]/following-sibling::span[@class="tbadge"]/text()')[0].strip()
+                except:
+                    count_patent = tree.xpath('//section[@id="zhuanlilist"]//*[@class="tbadge"]/text()')[0].strip()
                 if count_patent == '5000+':
                     count_page = 500
                 else:
@@ -87,9 +100,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        com_id = '6129f29192de208800c7b5d23486a154'
-        com_name = '乐融致新电子科技(天津)有限公司'
-        count_page = 298
+        # com_id = '82e93b9b4f272e8d9926a9af66931277'
+        # com_name = '青岛歌尔声学科技有限公司'
+        # count_page = 178
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
@@ -99,7 +112,7 @@ class PatentInfo():
             index_url = value[3]
             count = 0
             start_time = tm().get_localtime() #当前时间
-            for page in range(148, count_page + 1): #临时代码，供单次补采数据【001】
+            for page in range(1, count_page + 1): #临时代码，供单次补采数据【001】
             # for page in range(1, count_page + 1):
             #     if page == 1:
             #         page_url = f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={com_name}&tab=assets'

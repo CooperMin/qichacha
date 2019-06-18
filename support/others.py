@@ -2,12 +2,17 @@
 # -*- coding:utf-8 -*-
 import re
 import time
+import random
 from urllib.parse import quote
 
 class TimeInfo():
     def get_localtime(self):
         localtime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())  # 当前时间
         return localtime
+
+    def random_sec(self):
+        sec = random.randint(2,4)
+        return sec
 
 class DealKey():
     def search_key(self,key): #根据关键词进行检索
