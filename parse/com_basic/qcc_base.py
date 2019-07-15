@@ -3,7 +3,7 @@
 import os
 import requests
 
-from support.mysql import QccMysql as db
+from support.use_mysql import ConnMysql as db
 from support.others import DealKey as dk
 from support.others import TimeInfo as tm
 from support.headers import GeneralHeaders as gh
@@ -86,7 +86,7 @@ class ComBase():
             org_status = -1
         else:
             com_tags = tree.xpath('//div[@class="row tags"]/span/@class')
-            if len(com_tags) != 0: #一版为国家机关部门（如国务院、烟草局等）
+            if len(com_tags) != 0: #一般为国家机关部门（如国务院、烟草局等）
                 tag_status = True
             else:
                 tag_status = False

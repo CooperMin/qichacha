@@ -2,7 +2,7 @@
 import os
 from lxml import etree
 
-from support.mysql import QccMysql as db
+from support.use_mysql import ConnMysql as db
 
 class GeneralMethod():
     def __init__(self):

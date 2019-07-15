@@ -10,7 +10,7 @@ import requests
 
 from lxml import etree
 
-from support.mysql import QccMysql as db
+from support.use_mysql import ConnMysql as db
 from support.others import DealKey as dk
 from support.others import TimeInfo as tm
 from support.headers import GeneralHeaders as gh
@@ -18,24 +18,53 @@ from support.headers import GeneralHeaders as gh
 class PatentInfo():
 
     def get_com_id(self):
-        # sel = """
-        # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
-        # FROM `com_info`
-        # WHERE `origin`
-        # IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status_patent` IS NULL AND `count_patent` != '0'
-        # ORDER BY RAND() LIMIT 1;
-        # """
-        sel ="""
+        sel = """
         SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
         FROM `com_info`
-        WHERE `com_id` IN
-        (
-        '82e93b9b4f272e8d9926a9af66931277',
-        'e0f20217dc6a2463b073e906aa36bc72'
-        ) 
-        AND `status_patent` IS NULL AND `count_patent` != '0'
+        WHERE `origin`
+        IS NOT NULL AND LENGTH(`com_id`) > 8 AND `status_patent` IS NULL AND `count_patent` != '0'
         ORDER BY RAND() LIMIT 1;
         """
+        # sel ="""
+        # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
+        # FROM `com_info`
+        # WHERE `com_id` IN
+        # (
+        # '06b9ede70996255ed343050895046d00',
+        # '09a2b97c0596a84cf14404a4bd2c37d5',
+        # '18ff2c7ad1d11bfe40e0bec84f6d04d3',
+        # '1b16bbdae1540c6a72cd81d918b7c1f6',
+        # '30c09ef2def97bd3dc8d021fc2233b05',
+        # '31755ff79f6e867d79f7e49cb34da867',
+        # '424b1559bdac92d298cf9751979eb26b',
+        # '48431ef3f2c62cc60e1f4c22a178ee50',
+        # '4c468b205f73f703274e9db7f769a03f',
+        # '5602135acdc60cd54daf58cffbc24367',
+        # '61b780963a4bc4df5707fe376e41fb6f',
+        # '652177a5d80be3d70d7460a09018f599',
+        # '722e57a557a857c16121d5c03bd06d42',
+        # '7bb7f10fbffbdb6af869af34e8697ecc',
+        # '89d337c3d33410e68ca65d7933bd7d05',
+        # '8ad8b2d2c15fb92f9ce14107489e83cd',
+        # '9779771217b77e4538bd505660939c9a',
+        # '9b0c52e7af1ee199857b94bc3ea6be3d',
+        # 'a484e7a0b3167f6b257beb51dd93b241',
+        # 'a58533710987ecf98159545b61505a74',
+        # 'a5a0ba522ce994fb2a8de3a7625534e1',
+        # 'a9aa7de83d5d7b4c5008310395b1f403',
+        # 'ad797adc3b0a3fe293a0d7238c671b72',
+        # 'af8ef0be6adcc6cc6c5b5d1c217b487c',
+        # 'b45f3cc43a98aa52f5b3409cef1d6cd9',
+        # 'd3d4ff0894e82ca22a9e6b3a66fda267',
+        # 'dbe7a5624002aec7b0f26445c94f60cc',
+        # 'e06f5af040745430aec2faf8684ae3c7',
+        # 'f11933e8723fd03d325529bd2adc19a6',
+        # 'fa078a468930c63c92f7909b5a1c5788',
+        # 'ff0e1ff937b7aaa29b8953a54c978fe8'
+        # )
+        # AND `status_patent` IS NULL AND `count_patent` != '0'
+        # ORDER BY RAND() LIMIT 1;
+        # """
         # sel = """
         # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
         # FROM `com_info`
@@ -100,9 +129,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        # com_id = '82e93b9b4f272e8d9926a9af66931277'
-        # com_name = '青岛歌尔声学科技有限公司'
-        # count_page = 178
+        # com_id = '4c468b205f73f703274e9db7f769a03f'
+        # com_name = '无锡宝通科技股份有限公司'
+        # count_page = 18
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:

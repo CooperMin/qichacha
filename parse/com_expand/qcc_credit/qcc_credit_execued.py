@@ -9,7 +9,7 @@ import requests
 
 from lxml import etree
 
-from support.mysql import QccMysql as db
+from support.use_mysql import QccMysql as db
 from support.others import TimeInfo as tm
 from support.others import DealKey as dk
 from support.headers import GeneralHeaders as gh

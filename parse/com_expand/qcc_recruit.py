@@ -10,35 +10,70 @@ import requests
 from lxml import etree
 
 from support.others import DealKey as dk
-from support.mysql import QccMysql as db
+from support.use_mysql import ConnMysql as db
 from support.others import TimeInfo as tm
 from support.headers import GeneralHeaders as gh
 from parse.com_common.common import GeneralMethod as gm
 
 class RecruitInfo():
     def __init__(self):
+        self.dk = dk()
         self.db = db()
+        self.tm = tm()
         self.gh = gh()
         self.gm = gm()
         self.index_url = 'https://www.qichacha.com/'
 
     def sql(self): #输出需要的sql查询结果
-        # sel = """
-        # SELECT com_id,com_name FROM `com_info`
-        # WHERE origin IS NOT NULL
-        # AND chain = '虚拟现实'
-        # AND status_recruit IS NULL
-        # AND LENGTH(com_id) > 8
-        # ORDER BY RAND() LIMIT 1;
-        # """
         sel = """
-        SELECT com_id,com_name FROM com_info
-        WHERE area ='上海市'
-        AND origin is not null
-        AND chain ='虚拟现实'
-        AND status_recruit is null
+        SELECT com_id,com_name FROM `com_info`
+        WHERE origin IS NOT NULL
+        AND chain = '微电子产业'
+        AND status_recruit IS NULL
+        AND LENGTH(com_id) > 8
         ORDER BY RAND() LIMIT 1;
         """
+        # sel = """
+        # SELECT com_id,com_name FROM com_info
+        # WHERE area ='广东省'
+        # AND origin is not null
+        # AND chain ='虚拟现实'
+        # AND status_recruit is null
+        # ORDER BY RAND() LIMIT 1;
+        # """
+        # sel = """
+        # SELECT com_id,com_name FROM com_info
+        # WHERE status_recruit is null
+        # AND com_id IN(
+        # '09a2b97c0596a84cf14404a4bd2c37d5',
+        # '18ff2c7ad1d11bfe40e0bec84f6d04d3',
+        # '1b16bbdae1540c6a72cd81d918b7c1f6',
+        # '30c09ef2def97bd3dc8d021fc2233b05',
+        # '424b1559bdac92d298cf9751979eb26b',
+        # '47967ccec9d2e681d6f478e0dd16e0b9',
+        # '48431ef3f2c62cc60e1f4c22a178ee50',
+        # '4c468b205f73f703274e9db7f769a03f',
+        # '5602135acdc60cd54daf58cffbc24367',
+        # '61b780963a4bc4df5707fe376e41fb6f',
+        # '652177a5d80be3d70d7460a09018f599',
+        # '722e57a557a857c16121d5c03bd06d42',
+        # '7bb7f10fbffbdb6af869af34e8697ecc',
+        # '89d337c3d33410e68ca65d7933bd7d05',
+        # '8ad8b2d2c15fb92f9ce14107489e83cd',
+        # 'a484e7a0b3167f6b257beb51dd93b241',
+        # 'a58533710987ecf98159545b61505a74',
+        # 'a5a0ba522ce994fb2a8de3a7625534e1',
+        # 'a9aa7de83d5d7b4c5008310395b1f403',
+        # 'ad797adc3b0a3fe293a0d7238c671b72',
+        # 'af8ef0be6adcc6cc6c5b5d1c217b487c',
+        # 'b45f3cc43a98aa52f5b3409cef1d6cd9',
+        # 'dbe7a5624002aec7b0f26445c94f60cc',
+        # 'e06f5af040745430aec2faf8684ae3c7',
+        # 'f11933e8723fd03d325529bd2adc19a6',
+        # 'fa078a468930c63c92f7909b5a1c5788',
+        # 'ff0e1ff937b7aaa29b8953a54c978fe8')
+        # ORDER BY RAND() LIMIT 1;
+        # """
         # sel = """
         # SELECT com_id,com_name FROM `com_info`
         # WHERE com_id = 'bfcd4f4c8b4dd119556e518c9167b8fd'
@@ -85,7 +120,7 @@ class RecruitInfo():
             res = 0
         status_column = 'status_recruit'  # 表字段名
         count_column = 'count_recruit'  # 表字段名
-        gm().upd_status(com_id, status_column, count_column, count_rc)
+        self.gm.upd_status(com_id, status_column, count_column, count_rc)
         return count_rc,res
 
     def rc_judge(self): #返回精确的招聘数
@@ -150,7 +185,7 @@ class RecruitInfo():
             city = info.xpath('td[7]/text()')[0].strip()
             # print('\n{0}--总第{1}条----{2}/{3}页--{0}\n'.format('-' * 9, count, page, count_page))
             print('\n{0}--总第{1}条----第{2}页----{0}\n'.format('-' * 9,count,page))
-            localtime = tm().get_localtime()  # 当前时间
+            localtime = self.tm.get_localtime()  # 当前时间
             create_time = localtime
             print(f'当前时间：{create_time}')
             print(f'公司ID：{com_id}\n序号:{rc_num}\n岗位ID:{job_id}\n岗位名称:{rc_job}\n发布时间:{pub_date}\n'
@@ -163,7 +198,7 @@ class RecruitInfo():
             ("{com_id}","{job_id}","{rc_num}","{pub_date}","{rc_job}",
             "{salary}","{education}","{we}","{city}","{create_time}");
             """
-            db().inssts(ins)
+            self.db.inssts(ins)
         return count
 
     def rc_info(self): #主循环程序
@@ -211,13 +246,46 @@ class RecruitInfo():
     def verify_cond(self):#验证是否符合继续采集的条件
         rc = RecruitInfo()
         sel = """
-        SELECT count(*) FROM `com_info`
+        SELECT COUNT(*) FROM `com_info`
         WHERE origin IS NOT NULL
+        AND chain = '微电子产业'
         AND status_recruit IS NULL
-        AND area = '上海市'
-        AND chain = '虚拟现实'
         AND LENGTH(com_id) > 8;
         """
+        # sel = """
+        # SELECT count(*) FROM `com_info`
+        # WHERE origin IS NOT NULL
+        # AND status_recruit IS NULL
+        # AND LENGTH(com_id) > 8
+        # AND com_id IN(
+        # '09a2b97c0596a84cf14404a4bd2c37d5',
+        # '18ff2c7ad1d11bfe40e0bec84f6d04d3',
+        # '1b16bbdae1540c6a72cd81d918b7c1f6',
+        # '30c09ef2def97bd3dc8d021fc2233b05',
+        # '424b1559bdac92d298cf9751979eb26b',
+        # '47967ccec9d2e681d6f478e0dd16e0b9',
+        # '48431ef3f2c62cc60e1f4c22a178ee50',
+        # '4c468b205f73f703274e9db7f769a03f',
+        # '5602135acdc60cd54daf58cffbc24367',
+        # '61b780963a4bc4df5707fe376e41fb6f',
+        # '652177a5d80be3d70d7460a09018f599',
+        # '722e57a557a857c16121d5c03bd06d42',
+        # '7bb7f10fbffbdb6af869af34e8697ecc',
+        # '89d337c3d33410e68ca65d7933bd7d05',
+        # '8ad8b2d2c15fb92f9ce14107489e83cd',
+        # 'a484e7a0b3167f6b257beb51dd93b241',
+        # 'a58533710987ecf98159545b61505a74',
+        # 'a5a0ba522ce994fb2a8de3a7625534e1',
+        # 'a9aa7de83d5d7b4c5008310395b1f403',
+        # 'ad797adc3b0a3fe293a0d7238c671b72',
+        # 'af8ef0be6adcc6cc6c5b5d1c217b487c',
+        # 'b45f3cc43a98aa52f5b3409cef1d6cd9',
+        # 'dbe7a5624002aec7b0f26445c94f60cc',
+        # 'e06f5af040745430aec2faf8684ae3c7',
+        # 'f11933e8723fd03d325529bd2adc19a6',
+        # 'fa078a468930c63c92f7909b5a1c5788',
+        # 'ff0e1ff937b7aaa29b8953a54c978fe8');
+        # """
         result = rc.get_column(sel)[0]
         return result
 

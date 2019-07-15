@@ -9,8 +9,8 @@ import requests
 from lxml import etree
 from urllib.parse import quote
 
-from support.mysql import QccMysql as db
-from support.others import timeInfo as tm
+from support.use_mysql import ConnMysql as db
+from support.others import TimeInfo as tm
 from support.headers import GeneralHeaders as gh
 
 class TradeMarkInfo():
