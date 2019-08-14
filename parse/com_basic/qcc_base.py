@@ -84,6 +84,7 @@ class ComBase():
             is_listed = -1
             is_hthr = -1
             org_status = -1
+            so_status = -1
         else:
             com_tags = tree.xpath('//div[@class="row tags"]/span/@class')
             if len(com_tags) != 0: #一般为国家机关部门（如国务院、烟草局等）
@@ -108,9 +109,15 @@ class ComBase():
                 so_status = False
             print(com_tags)
             input('\nPause')
-        return tag_status,is_listed,is_hthr,org_status
+        return tag_status,is_listed,is_hthr,org_status,so_status
 
-    def
+    def concat_type_parse_comm(self):
+        cb = ComBase()
+        tree = cm.test_func()
+        result = cb.verify_com_type(tree)
+
+
+
 
     def parse_com_info_comm(self,tree,res,com_id,kw): #解析公司基本信息等
         com_name = tree.xpath('//input[@name="toCompanyName"]/@value')[0].strip()

@@ -18,13 +18,13 @@ from support.headers import GeneralHeaders as gh
 class PatentInfo():
 
     def get_com_id(self):
-        sel = """
-        SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
-        FROM `com_info`
-        WHERE `origin`
-        IS NOT NULL AND LENGTH(`com_id`) > 8 AND `status_patent` IS NULL AND `count_patent` != '0'
-        ORDER BY RAND() LIMIT 1;
-        """
+        # sel = """
+        # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
+        # FROM `com_info`
+        # WHERE `origin`
+        # IS NOT NULL AND LENGTH(`com_id`) > 8 AND `status_patent` IS NULL AND `count_patent` != '0'
+        # ORDER BY RAND() LIMIT 1;
+        # """
         # sel ="""
         # SELECT `com_id`,`com_name`,`status_patent`,`count_patent`
         # FROM `com_info`
@@ -72,6 +72,23 @@ class PatentInfo():
         # AND LENGTH(`com_id`) > 5 AND `status_patent` IS NULL AND `count_patent` != '0'
         # ORDER BY RAND() LIMIT 1;
         # """
+        # sel = """
+        # SELECT b.`com_id`,b.`com_name`,b.`status_patent`,b.`count_patent`
+        # FROM temp_ppp a JOIN com_info b
+        # ON a.`com_name`=b.`com_name`
+        # AND LENGTH(b.com_id)=32
+        # AND b.`status_patent` IS NULL
+        # AND count_patent != 0
+        # ORDER BY RAND() LIMIT 1;
+        # """
+        sel = """
+        SELECT com_id,com_name,status_patent,count_patent 
+        FROM com_info WHERE LENGTH(com_id)=32 
+        AND status_patent IS NULL 
+        AND count_patent != 0
+        AND com_name LIKE'%海尔%'
+        ORDER BY RAND() LIMIT 1;
+        """
         result = db().selsts(sel)
         if result == ():
             result = [None,None,None,None]
@@ -129,9 +146,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        # com_id = '4c468b205f73f703274e9db7f769a03f'
-        # com_name = '无锡宝通科技股份有限公司'
-        # count_page = 18
+        # com_id = 'c5bfa9c887dc4a13459c0ee2d1a819c5'
+        # com_name = '青岛经济技术开发区海尔热水器有限公司'
+        # count_page = 134
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:
@@ -203,14 +220,17 @@ class PatentInfo():
                             cpc = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"CPC分类号")]/following-sibling::td[1]/text()')[0].strip()
                             app_address = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"申请人地址")]/following-sibling::td[1]/text()')[0].strip()
                             app_zip_code = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"申请人邮编")]/following-sibling::td[1]/text()')[0].strip()
-                            abstract = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"摘要")]/following-sibling::td[1]/text()')[0].strip()
+                            try:
+                                abstract = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"摘要")]/following-sibling::td[1]/text()')[0].strip()
+                            except:
+                                abstract = tree_dt.xpath('string(//table[@class="ntable"]/tbody/tr/td[contains(text(),"摘要")]/following-sibling::td)').strip()
                             try:
                                 abstract_photo = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"摘要附图")]/following-sibling::td[1]/img/@src')[0].strip()
                             except:
                                 abstract_photo = '-'
                             try:
                                 claim = tree_dt.xpath('//table[@class="ntable"]/tr/td[@class="ea_instructions" and position()=1]/p/text()')
-                                claim = ''.join(claim)
+                                claim = ''.join(claim).replace('"',"'")
                             except:
                                 claim = '-'
                             try:
