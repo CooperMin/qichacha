@@ -18,13 +18,25 @@ class TradeMarkInfo():
     def __init__(self):
         self.db = db()
         self.dk = dk()
+        self.gh = gh()
 
     def get_com_id(self):
+        # sel = """
+        # SELECT `com_id`,`com_name`,`status_tm`,`count_tm`
+        # FROM `com_info`
+        # WHERE `origin`
+        # IS NOT NULL AND LENGTH(`com_id`) = 32
+        # AND `status_tm` IS NULL
+        # AND `count_patent` != '0'
+        # ORDER BY RAND() LIMIT 1;
+        # """
         sel = """
-        SELECT `com_id`,`com_name`,`status_tm`,`count_tm`
-        FROM `com_info` 
-        WHERE `origin` 
-        IS NOT NULL AND LENGTH(`com_id`) > 5 AND `status_tm` IS NULL AND `count_patent` != '0'
+        SELECT b.`com_id`,b.`com_name`,b.`status_tm`,b.`count_tm`
+        FROM temp_ppp a JOIN com_info b
+        ON a.`com_name`=b.`com_name`
+        AND LENGTH(b.com_id)=32
+        AND b.`status_tm` IS NULL
+        AND count_tm != 0
         ORDER BY RAND() LIMIT 1;
         """
         result = db().selsts(sel)
@@ -40,22 +52,21 @@ class TradeMarkInfo():
         com_id = result[0]
         com_name = result[1]
 
-        # com_id = '608886557bb9cf989ae600d1e8a94d40' #测试代码，采集时需注释掉
-        # com_name = '网易(杭州)网络有限公司' #测试代码，采集时需注释掉
-        key = dk().search_key(com_name)
+        # com_id = 'dfdc316cf68eb1c07ed298f85587232b' #测试代码，采集时需注释掉
+        # com_name = '青岛极地海洋世界有限公司' #测试代码，采集时需注释掉
+        key = tmi.dk.search_key(com_name)
         status = result[2]
         if com_id == None:
             value = [None,None,None]
         else:
             index_url = 'https://www.qichacha.com'
             com_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&tab=assets'
-            hds = gh().header()
+            hds = tmi.gh.header()
             hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})
             time.sleep(random.randint(1,2))
             res = requests.get(com_url,headers=hds).text
             tree = etree.HTML(res)
-
-            count_trademark = tree.xpath('//*[contains(text(),"商标信息") and @class="title"]/following-sibling::span[@class="tbadge"]/text()')[0].strip()
+            count_trademark = tree.xpath('//span[@class="tbadge"]/text()')[0].strip()
             if count_trademark == '5000+':
                 count_page = 500
             else:
@@ -82,7 +93,7 @@ class TradeMarkInfo():
             for page in range(1, count_page + 1):
                 # 'https://www.qichacha.com/company_getinfos?unique=&companyname=&p=2&tab=assets&box=zhuanli&zlpublicationyear=&zlipclist=&zlkindcode=&zllegalstatus='
                 page_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=assets&box=shangbiao'
-                hds = gh().header()
+                hds = tmi.gh.header()
                 hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})
                 time.sleep(random.randint(1,2))
                 res_tmi = requests.get(page_url, headers=hds).text
@@ -118,11 +129,16 @@ class TradeMarkInfo():
                     int_reg_date = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"国际注册日期")]/following-sibling::td[1]/text()')[0].strip()
                     later_scheduled_date = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"后期指定日期")]/following-sibling::td[1]/text()')[0].strip()
                     prio_date = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"优先权日期")]/following-sibling::td[1]/text()')[0].strip()
-                    agency = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"代理/办理机构")]/following-sibling::td[1]/text()')[0].strip()
+                    try:
+                        agency = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"代理/办理机构")]/following-sibling::td[1]/a/text()')[0].strip()
+                    except:
+                        agency = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"代理/办理机构")]/following-sibling::td[1]/text()')[0].strip()
                     service = tree_dt.xpath('//table[@class="ntable"]/tbody/tr/td[contains(text(),"商品/服务")]/following-sibling::td[1]/text()')[0].strip()
                     print('\n{0}--总第{1}条----{2}/{3}页--{0}\n'.format('-' * 9, count,page,count_page))
                     localtime = tm().get_localtime()  # 当前时间
-                    print(f'公司ID:{com_id} 当前时间：{localtime}')
+                    create_time = localtime
+                    print(f'当前时间：{localtime}')
+                    print(f'公司ID:{com_id}\n公司名称:{com_name}')
                     print(f'序号:{tm_num}\n商标LOGO URL:{tm_logo_url}\n商标名称:{tm_name}\n商标状态:{tm_status}\n申请时间:{app_date}\n'
                           f'申请/注册号:{tm_regno}\n国际类型:{tm_int_type}\n类似群:{sim_groups}\n申请人名称（中文）:{app_cn}\n申请人名称（英文）:{app_en}\n'
                           f'申请人地址（中文）:{app_addr_cn}\n申请人地址（英文）:{app_addr_en}\n初审公告期号:{first_trial_no}\n初审公告日期:{first_trial_date}\n注册公告期号:{reg_not_peri_no}\n'
@@ -166,11 +182,11 @@ class TradeMarkInfo():
 
 
 if __name__ == '__main__':
-    pt = PatentInfo()
+    tmi = TradeMarkInfo()
     # pt.get_com_id()
     while 1 == 1:
         time.sleep(3)
         print('开始新一轮采集')
-        pt.get_page_info()
+        tmi.get_page_info()
 
     # PatentInfo().getinfo()

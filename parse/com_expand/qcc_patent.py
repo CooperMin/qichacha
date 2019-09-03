@@ -83,10 +83,9 @@ class PatentInfo():
         # """
         sel = """
         SELECT com_id,com_name,status_patent,count_patent 
-        FROM com_info WHERE LENGTH(com_id)=32 
-        AND status_patent IS NULL 
+        FROM com_info WHERE status_patent IS NULL
         AND count_patent != 0
-        AND com_name LIKE'%海尔%'
+        AND origin LIKE '%毛明%'
         ORDER BY RAND() LIMIT 1;
         """
         result = db().selsts(sel)
@@ -146,9 +145,9 @@ class PatentInfo():
         count_page = value[2]
 
         # 临时代码，供单次补采数据【001】
-        # com_id = 'c5bfa9c887dc4a13459c0ee2d1a819c5'
-        # com_name = '青岛经济技术开发区海尔热水器有限公司'
-        # count_page = 134
+        # com_id = 'x697654f34422233895571cf26e42268'
+        # com_name = '青岛科技大学'
+        # count_page = 500
         # 临时代码，供单次补采数据【001】
 
         if com_id == None:

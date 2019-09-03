@@ -117,8 +117,6 @@ class ComBase():
         result = cb.verify_com_type(tree)
 
 
-
-
     def parse_com_info_comm(self,tree,res,com_id,kw): #解析公司基本信息等
         com_name = tree.xpath('//input[@name="toCompanyName"]/@value')[0].strip()
         try:
@@ -141,9 +139,9 @@ class ComBase():
         except:
             address = tree.xpath('//span[contains(text(),"地址：")]/parent/span[2]/a[1]')[0].text.strip()  # 地址
         try:
-            business_term = tree.xpath('//td[contains(text(),"注册资本") and @class="tb"]/following-sibling::td[1]')[0].text.strip()  # 注册资本
+            reg_cap = tree.xpath('//td[contains(text(),"注册资本") and @class="tb"]/following-sibling::td[1]')[0].text.strip()  # 注册资本
         except:
-            business_term = '-'
+            reg_cap = '-'
         try:
             com_size = tree.xpath('//td[contains(text(),"人员规模") or contains(text(),"员工人数") or contains(text(),"律师人数") and @class="tb"]/following-sibling::td[1]')[0].text.strip()  # 人员规模
         except:
@@ -169,15 +167,12 @@ class ComBase():
         # url = 'https://www.qichacha.com/firm_3f603703d59a04cbe427e5825099a565.html' #百度
         # url = 'https://www.qichacha.com/firm_c70a55cb048c8e4db7bca357a2c113e0.html' #阿里巴巴
         # url = 'https://www.qichacha.com/firm_gbfa3e0b8a8a13706d8269118c68a86c.html' #河南省烟草专卖驻郑州铁路局烟草专卖局
+        # url = 'https://www.qichacha.com/firm_j3074e0a05f1a0bbd4d9394588ecde97.html' #北京中科科教发展基金会
         header = cm.gh.header()
         res = requests.get(url,headers=header).text
         # print(res)
         tree = cm.gm.verify(res)
         return tree
-
-
-
-
 
 
 if __name__ == '__main__':
