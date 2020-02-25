@@ -30,13 +30,22 @@ class TradeMarkInfo():
         # AND `count_patent` != '0'
         # ORDER BY RAND() LIMIT 1;
         # """
+        # sel = """
+        # SELECT b.`com_id`,b.`com_name`,b.`status_tm`,b.`count_tm`
+        # FROM temp_ppp a JOIN com_info b
+        # ON a.`com_name`=b.`com_name`
+        # AND LENGTH(b.com_id)=32
+        # AND b.`status_tm` IS NULL
+        # AND count_tm != 0
+        # ORDER BY RAND() LIMIT 1;
+        # """
         sel = """
-        SELECT b.`com_id`,b.`com_name`,b.`status_tm`,b.`count_tm`
-        FROM temp_ppp a JOIN com_info b
-        ON a.`com_name`=b.`com_name`
-        AND LENGTH(b.com_id)=32
-        AND b.`status_tm` IS NULL
-        AND count_tm != 0
+        SELECT `com_id`,`com_name`,`status_tm`,`count_tm`
+        FROM `com_info`
+        WHERE `other_id` LIKE '%ls1000%'
+        AND LENGTH(`com_id`) = 32
+        AND `status_tm` IS NULL
+        AND `count_tm` != '0'
         ORDER BY RAND() LIMIT 1;
         """
         result = db().selsts(sel)

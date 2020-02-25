@@ -6,7 +6,6 @@
 import time
 import random
 import requests
-
 from lxml import etree
 
 from support.others import DealKey as dk
@@ -25,76 +24,46 @@ class RecruitInfo():
         self.index_url = 'https://www.qichacha.com/'
 
     def sql(self): #输出需要的sql查询结果
-        sel = """
-        SELECT com_id,com_name FROM `com_info`
-        WHERE origin IS NOT NULL
-        AND chain = '微电子产业'
-        AND status_recruit IS NULL
-        AND LENGTH(com_id) > 8
-        ORDER BY RAND() LIMIT 1;
-        """
         # sel = """
-        # SELECT com_id,com_name FROM com_info
-        # WHERE area ='广东省'
-        # AND origin is not null
-        # AND chain ='虚拟现实'
-        # AND status_recruit is null
-        # ORDER BY RAND() LIMIT 1;
-        # """
-        # sel = """
-        # SELECT com_id,com_name FROM com_info
-        # WHERE status_recruit is null
-        # AND com_id IN(
-        # '09a2b97c0596a84cf14404a4bd2c37d5',
-        # '18ff2c7ad1d11bfe40e0bec84f6d04d3',
-        # '1b16bbdae1540c6a72cd81d918b7c1f6',
-        # '30c09ef2def97bd3dc8d021fc2233b05',
-        # '424b1559bdac92d298cf9751979eb26b',
-        # '47967ccec9d2e681d6f478e0dd16e0b9',
-        # '48431ef3f2c62cc60e1f4c22a178ee50',
-        # '4c468b205f73f703274e9db7f769a03f',
-        # '5602135acdc60cd54daf58cffbc24367',
-        # '61b780963a4bc4df5707fe376e41fb6f',
-        # '652177a5d80be3d70d7460a09018f599',
-        # '722e57a557a857c16121d5c03bd06d42',
-        # '7bb7f10fbffbdb6af869af34e8697ecc',
-        # '89d337c3d33410e68ca65d7933bd7d05',
-        # '8ad8b2d2c15fb92f9ce14107489e83cd',
-        # 'a484e7a0b3167f6b257beb51dd93b241',
-        # 'a58533710987ecf98159545b61505a74',
-        # 'a5a0ba522ce994fb2a8de3a7625534e1',
-        # 'a9aa7de83d5d7b4c5008310395b1f403',
-        # 'ad797adc3b0a3fe293a0d7238c671b72',
-        # 'af8ef0be6adcc6cc6c5b5d1c217b487c',
-        # 'b45f3cc43a98aa52f5b3409cef1d6cd9',
-        # 'dbe7a5624002aec7b0f26445c94f60cc',
-        # 'e06f5af040745430aec2faf8684ae3c7',
-        # 'f11933e8723fd03d325529bd2adc19a6',
-        # 'fa078a468930c63c92f7909b5a1c5788',
-        # 'ff0e1ff937b7aaa29b8953a54c978fe8')
+        # SELECT com_id,com_name FROM `com_info`
+        # WHERE origin IS NOT NULL
+        # AND chain LIKE '%微电子产业%'
+        # AND status_recruit IS NULL
+        # AND LENGTH(com_id) = 32
         # ORDER BY RAND() LIMIT 1;
         # """
         # sel = """
         # SELECT com_id,com_name FROM `com_info`
-        # WHERE com_id = 'bfcd4f4c8b4dd119556e518c9167b8fd'
+        # WHERE status_recruit IS NULL
+        # AND LENGTH(com_id) = 32
+        # ORDER BY RAND() LIMIT 1;
         # """
+        sel = """
+        SELECT com_id,com_name FROM `com_info`
+        WHERE status_recruit IS NULL
+        AND other_id LIKE '%ls1000%'
+        AND LENGTH(com_id) = 32
+        ORDER BY RAND() LIMIT 1;
+        """
         return sel
 
     def get_column(self,sql): #接收sql语句，返回结果
-        result = RecruitInfo().db.selsts(sql)[0]
+        rc = RecruitInfo()
+        result = rc.db.selsts(sql)[0]
         return result #返回元祖数据
 
     def count_rc_judge( self,com_id): #根据公司首页招聘字段判断招聘数量，模糊判断，需做二次判断
+        rc = RecruitInfo()
         if com_id == None:
             count_rc = 0
         else:
             com_url = f'https://www.qichacha.com/firm_{com_id}.html'
-            hds = gh().header()
+            hds = rc.gh.header()
             time.sleep(random.randint(3, 5))
             res = requests.get(com_url, headers=hds).text
-            tree = self.gm.verify(res)
+            tree = rc.gm.verify(res)
             try:
-                count_rc = tree.xpath('//div[@class="company-nav-items"]/span[contains(text(),"招聘")]/span/text()|//div[@class="company-nav-items"]/a[@data-pos="joblist"]/span/text()')[0]
+                count_rc = tree.xpath('//div[@class="company-nav-items"]/span[contains(text(),"招聘")]/span/text()|//div[@class="company-nav-items"]/a[@data-pos="joblist"]/span/text()')[0].strip()
                 if count_rc == '999+':
                     count_rc = 999
                 count_rc = int(count_rc)
@@ -103,16 +72,17 @@ class RecruitInfo():
         return count_rc
 
     def get_count_rc(self,count_rc,key,count,com_id): #根据模糊判断，到招聘详情页判断出精确的招聘数量
+        rc = RecruitInfo()
         if count_rc > 0:
             info_url = f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={key}&tab=run'
-            hds = self.gh.header()
+            hds = rc.gh.header()
             hds.update({'Referer':f'https://www.qichacha.com/firm_{com_id}.html'})
             time.sleep(random.randint(3, 5))
             res = requests.get(info_url, headers=hds).text
-            tree = self.gm.verify(res)
+            tree = rc.gm.verify(res)
             count_rc = tree.xpath('//a[contains(@onclick,"#joblist")]/text()')[0].split('招聘')[1].strip()
             count_rc = int(count_rc)
-            localtime = tm().get_localtime()  # 当前时间
+            localtime = rc.tm.get_localtime()  # 当前时间
             print(localtime)
             print(f'计数器：{count}\n公司ID:{com_id}\n招聘岗位数：{count_rc}')
         else:
@@ -124,19 +94,20 @@ class RecruitInfo():
         return count_rc,res
 
     def rc_judge(self): #返回精确的招聘数
+        rc = RecruitInfo()
         # global com_id,com_name,res
         count_rc = 0
         com_id = 1
         count = 0
         while count_rc == 0 and com_id != None:
             count += 1
-            sql = RecruitInfo().sql()
-            result = RecruitInfo().get_column(sql)
+            sql = rc.sql()
+            result = rc.get_column(sql)
             com_id = result[0]
             com_name = result[1]
-            key = dk().search_key(com_name)
-            count_rc = RecruitInfo().count_rc_judge(com_id)
-            info = RecruitInfo().get_count_rc(count_rc,key,count,com_id)
+            key = rc.dk.search_key(com_name)
+            count_rc = rc.count_rc_judge(com_id)
+            info = rc.get_count_rc(count_rc,key,count,com_id)
             count_rc = info[0]
             res = info[1]
         else:
@@ -147,7 +118,8 @@ class RecruitInfo():
         return result
 
     def rc_page_judge(self): #判断页码                                                           #判断是否是最近一或两年的招聘数据
-        result = RecruitInfo().rc_judge()
+        rc = RecruitInfo()
+        result = rc.rc_judge()
         real_count_rc = result[0]
         com_id = result[1]
         com_name = result[2]
@@ -172,6 +144,7 @@ class RecruitInfo():
         return para
 
     def get_info(self,rc_info_li,com_id,page): #解析详情页面代码，获取所需字段
+        rc = RecruitInfo()
         count = (page-1)*10
         for nbr, info in enumerate(rc_info_li, 1):
             count += 1
@@ -198,7 +171,7 @@ class RecruitInfo():
             ("{com_id}","{job_id}","{rc_num}","{pub_date}","{rc_job}",
             "{salary}","{education}","{we}","{city}","{create_time}");
             """
-            self.db.inssts(ins)
+            rc.db.inssts(ins)
         return count
 
     def rc_info(self): #主循环程序
@@ -223,11 +196,11 @@ class RecruitInfo():
                     count += 1
                     url = f'{rc.index_url}company_getinfos?'
                     para = rc.rc_detail_para(com_id,com_name,page)
-                    hds = self.gh.header()
+                    hds = rc.gh.header()
                     hds.update({'Referer': f'{rc.index_url}firm_{com_id}.html'})
                     time.sleep(random.randint(1, 2))
                     res = requests.get(url,params=para,headers=hds).text
-                    tree = self.gm.verify(res)
+                    tree = rc.gm.verify(res)
                     pub_date_li = tree.xpath('//tbody/tr[position()>1]/td[2]/text()')
                     value = rc.verify_year(pub_date_li)
                     if value == False:
@@ -245,47 +218,24 @@ class RecruitInfo():
 
     def verify_cond(self):#验证是否符合继续采集的条件
         rc = RecruitInfo()
-        sel = """
-        SELECT COUNT(*) FROM `com_info`
-        WHERE origin IS NOT NULL
-        AND chain = '微电子产业'
-        AND status_recruit IS NULL
-        AND LENGTH(com_id) > 8;
-        """
         # sel = """
-        # SELECT count(*) FROM `com_info`
+        # SELECT COUNT(*) FROM `com_info`
         # WHERE origin IS NOT NULL
+        # AND chain LIKE '%微电子产业%'
         # AND status_recruit IS NULL
-        # AND LENGTH(com_id) > 8
-        # AND com_id IN(
-        # '09a2b97c0596a84cf14404a4bd2c37d5',
-        # '18ff2c7ad1d11bfe40e0bec84f6d04d3',
-        # '1b16bbdae1540c6a72cd81d918b7c1f6',
-        # '30c09ef2def97bd3dc8d021fc2233b05',
-        # '424b1559bdac92d298cf9751979eb26b',
-        # '47967ccec9d2e681d6f478e0dd16e0b9',
-        # '48431ef3f2c62cc60e1f4c22a178ee50',
-        # '4c468b205f73f703274e9db7f769a03f',
-        # '5602135acdc60cd54daf58cffbc24367',
-        # '61b780963a4bc4df5707fe376e41fb6f',
-        # '652177a5d80be3d70d7460a09018f599',
-        # '722e57a557a857c16121d5c03bd06d42',
-        # '7bb7f10fbffbdb6af869af34e8697ecc',
-        # '89d337c3d33410e68ca65d7933bd7d05',
-        # '8ad8b2d2c15fb92f9ce14107489e83cd',
-        # 'a484e7a0b3167f6b257beb51dd93b241',
-        # 'a58533710987ecf98159545b61505a74',
-        # 'a5a0ba522ce994fb2a8de3a7625534e1',
-        # 'a9aa7de83d5d7b4c5008310395b1f403',
-        # 'ad797adc3b0a3fe293a0d7238c671b72',
-        # 'af8ef0be6adcc6cc6c5b5d1c217b487c',
-        # 'b45f3cc43a98aa52f5b3409cef1d6cd9',
-        # 'dbe7a5624002aec7b0f26445c94f60cc',
-        # 'e06f5af040745430aec2faf8684ae3c7',
-        # 'f11933e8723fd03d325529bd2adc19a6',
-        # 'fa078a468930c63c92f7909b5a1c5788',
-        # 'ff0e1ff937b7aaa29b8953a54c978fe8');
+        # AND LENGTH(com_id) = 32;
         # """
+        # sel = """
+        # SELECT COUNT(*) FROM `com_info`
+        # WHERE status_recruit IS NULL
+        # AND LENGTH(com_id) = 32;
+        # """
+        sel = """
+        SELECT count(*) FROM `com_info`
+        WHERE status_recruit IS NULL
+        AND other_id LIKE '%ls1000%'
+        AND LENGTH(com_id) = 32
+        """
         result = rc.get_column(sel)[0]
         return result
 

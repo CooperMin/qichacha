@@ -33,13 +33,22 @@ class WebSite():
         # AND `count_web` != '0'
         # ORDER BY RAND() LIMIT 1;
         # """
+        # sel = """
+        # SELECT b.`com_id`,b.`com_name`,b.`status_web`,b.`count_web`
+        # FROM temp_ppp a JOIN com_info b
+        # ON a.`com_name`=b.`com_name`
+        # AND LENGTH(b.com_id)=32
+        # AND b.`status_web` IS NULL
+        # AND count_web != 0
+        # ORDER BY RAND() LIMIT 1;
+        # """
         sel = """
-        SELECT b.`com_id`,b.`com_name`,b.`status_web`,b.`count_web`
-        FROM temp_ppp a JOIN com_info b
-        ON a.`com_name`=b.`com_name`
-        AND LENGTH(b.com_id)=32
-        AND b.`status_web` IS NULL
-        AND count_web != 0
+        SELECT `com_id`,`com_name`,`status_web`,`count_web`
+        FROM `com_info`
+        WHERE `other_id` LIKE '%ls1000%'
+        AND LENGTH(`com_id`) = 32
+        AND `status_web` IS NULL
+        AND `count_web` != '0'
         ORDER BY RAND() LIMIT 1;
         """
         result = ws.db.selsts(sel)
@@ -182,13 +191,22 @@ class WebSite():
         # AND `status_web` IS NULL
         # AND `count_web` != '0';
         # """
+        # sel = """
+        # SELECT COUNT(*)
+        # FROM temp_ppp a JOIN com_info b
+        # ON a.`com_name`=b.`com_name`
+        # AND LENGTH(b.com_id)=32
+        # AND b.`status_web` IS NULL
+        # AND count_web != 0;
+        # """
         sel = """
         SELECT COUNT(*)
-        FROM temp_ppp a JOIN com_info b
-        ON a.`com_name`=b.`com_name`
-        AND LENGTH(b.com_id)=32
-        AND b.`status_web` IS NULL
-        AND count_web != 0;
+        FROM `com_info`
+        WHERE `other_id` LIKE '%ls1000%'
+        AND LENGTH(`com_id`) = 32
+        AND `status_web` IS NULL
+        AND `count_web` != '0'
+        ORDER BY RAND() LIMIT 1;
         """
         result = ws.get_column(sel)[0]
         return result

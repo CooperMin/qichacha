@@ -33,13 +33,22 @@ class WokrsInfo():
         # AND `count_cpr_of_works` != '0'
         # ORDER BY RAND() LIMIT 1;
         # """
+        # sel = """
+        # SELECT b.`com_id`,b.`com_name`,b.`status_cpr_of_works`,b.`count_cpr_of_works`
+        # FROM temp_ppp a JOIN com_info b
+        # ON a.`com_name`=b.`com_name`
+        # AND LENGTH(b.com_id)=32
+        # AND b.`status_cpr_of_works` IS NULL
+        # AND count_cpr_of_works != 0
+        # ORDER BY RAND() LIMIT 1;
+        # """
         sel = """
-        SELECT b.`com_id`,b.`com_name`,b.`status_cpr_of_works`,b.`count_cpr_of_works`
-        FROM temp_ppp a JOIN com_info b
-        ON a.`com_name`=b.`com_name`
-        AND LENGTH(b.com_id)=32
-        AND b.`status_cpr_of_works` IS NULL
-        AND count_cpr_of_works != 0
+        SELECT `com_id`,`com_name`,`status_cpr_of_works`,`count_cpr_of_works`
+        FROM `com_info`
+        WHERE `other_id` LIKE '%ls1000%'
+        AND LENGTH(`com_id`) = 32
+        AND `status_cpr_of_works` IS NULL
+        AND `count_cpr_of_works` != '0'
         ORDER BY RAND() LIMIT 1;
         """
         result = wi.db.selsts(sel)
@@ -166,13 +175,21 @@ class WokrsInfo():
         # AND `status_cpr_of_works` IS NULL
         # AND `count_cpr_of_works` != '0';
         # """
+        # sel = """
+        # SELECT COUNT(*)
+        # FROM temp_ppp a JOIN com_info b
+        # ON a.`com_name`=b.`com_name`
+        # AND LENGTH(b.com_id)=32
+        # AND b.`status_cpr_of_works` IS NULL
+        # AND count_cpr_of_works != 0;
+        # """
         sel = """
         SELECT COUNT(*)
-        FROM temp_ppp a JOIN com_info b
-        ON a.`com_name`=b.`com_name`
-        AND LENGTH(b.com_id)=32
-        AND b.`status_cpr_of_works` IS NULL
-        AND count_cpr_of_works != 0;
+        FROM `com_info`
+        WHERE `other_id` LIKE '%ls1000%'
+        AND LENGTH(`com_id`) = 32
+        AND `status_cpr_of_works` IS NULL
+        AND `count_cpr_of_works` != '0';
         """
         result = wi.get_column(sel)[0]
         return result

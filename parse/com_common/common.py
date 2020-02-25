@@ -4,17 +4,18 @@ from lxml import etree
 
 from support.use_mysql import ConnMysql as db
 
-class GeneralMethod():
+
+class GeneralMethod:
     def __init__(self):
         self.db = db()
 
-    def upd_status(self, com_id,status_column,count_column, count):  # 更新com_info表相关字段状态码
-        if count == -1: #表示页面无此内容
+    def upd_status(self, com_id, status_column, count_column, count):  # 更新com_info表相关字段状态码
+        if count == -1:  # 表示页面无此内容
             status = -1
-        elif count == 0: #表示数据量为0
+        elif count == 0:  # 表示数据量为0
             status = 0
         else:
-            status = 9 #此状态表示有数据但未采集
+            status = 9  # 此状态表示有数据但未采集
         upd = f"""
             UPDATE 
             `com_info` 
@@ -25,7 +26,7 @@ class GeneralMethod():
             """
         self.db.updsts(upd)
 
-    def verify(self,res): #判断网站访问是否需要验证，若可正常访问则返回结果树
+    def verify(self, res):  # 判断网站访问是否需要验证，若可正常访问则返回结果树
         global tree
         if '<script>window.location.href' in res:
             print('访问频繁，需验证！{rc_judge}')
@@ -40,7 +41,7 @@ class GeneralMethod():
             tree = etree.HTML(res)
         return tree
 
-    def verify_with(self,res,com_name):
+    def verify_with(self, res, com_name):
         global tree
         if '<script>window.location.href' in res:
             print('访问频繁，需验证！{rc_judge}')

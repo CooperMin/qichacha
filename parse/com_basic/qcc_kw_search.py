@@ -7,7 +7,9 @@ from urllib.parse import quote,unquote
 
 from support.others import DealKey as dk
 from support.headers import GeneralHeaders as gh
-class Jarvis(): #Jarvis-托尼的管家
+
+
+class Jarvis: #Jarvis-托尼的管家
     def __init__(self):
         self.index_url = 'https://www.qichacha.com/'
         self.gh = gh()

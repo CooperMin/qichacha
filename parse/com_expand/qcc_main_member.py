@@ -21,56 +21,34 @@ class MainMember():
 
     def get_com_id(self):
         mm = MainMember()
-        sel = """
-        SELECT `com_id`,`com_name`,`status_main_member`
-        FROM `com_info`
-        WHERE `chain` ='虚拟现实'
-        AND LENGTH(com_id) > 8
-        AND `area` = '广东省'
-        AND `status_main_member` IS NULL
-        ORDER BY RAND() LIMIT 1;
-        """
+        # sel = """
+        # SELECT `com_id`,`com_name`,`status_main_member`
+        # FROM `com_info`
+        # WHERE `chain` ='虚拟现实'
+        # AND LENGTH(com_id) > 8
+        # AND `area` = '广东省'
+        # AND `status_main_member` IS NULL
+        # ORDER BY RAND() LIMIT 1;
+        # """
         # sel = """
         # SELECT `com_id`,`com_name`,`status_main_member`
         # FROM `com_info`
         # WHERE `com_id` IN
         # (
-        # '06b9ede70996255ed343050895046d00',
-        # '09a2b97c0596a84cf14404a4bd2c37d5',
-        # '18ff2c7ad1d11bfe40e0bec84f6d04d3',
-        # '1b16bbdae1540c6a72cd81d918b7c1f6',
-        # '30c09ef2def97bd3dc8d021fc2233b05',
-        # '31755ff79f6e867d79f7e49cb34da867',
-        # '424b1559bdac92d298cf9751979eb26b',
-        # '47967ccec9d2e681d6f478e0dd16e0b9',
-        # '48431ef3f2c62cc60e1f4c22a178ee50',
-        # '4c468b205f73f703274e9db7f769a03f',
-        # '5602135acdc60cd54daf58cffbc24367',
-        # '61b780963a4bc4df5707fe376e41fb6f',
-        # '652177a5d80be3d70d7460a09018f599',
-        # '722e57a557a857c16121d5c03bd06d42',
-        # '7bb7f10fbffbdb6af869af34e8697ecc',
-        # '89d337c3d33410e68ca65d7933bd7d05',
-        # '8ad8b2d2c15fb92f9ce14107489e83cd',
-        # '9779771217b77e4538bd505660939c9a',
-        # '9b0c52e7af1ee199857b94bc3ea6be3d',
-        # 'a484e7a0b3167f6b257beb51dd93b241',
-        # 'a58533710987ecf98159545b61505a74',
-        # 'a5a0ba522ce994fb2a8de3a7625534e1',
-        # 'a9aa7de83d5d7b4c5008310395b1f403',
-        # 'ad797adc3b0a3fe293a0d7238c671b72',
-        # 'af8ef0be6adcc6cc6c5b5d1c217b487c',
-        # 'b45f3cc43a98aa52f5b3409cef1d6cd9',
-        # 'd3d4ff0894e82ca22a9e6b3a66fda267',
-        # 'dbe7a5624002aec7b0f26445c94f60cc',
-        # 'e06f5af040745430aec2faf8684ae3c7',
-        # 'f11933e8723fd03d325529bd2adc19a6',
-        # 'fa078a468930c63c92f7909b5a1c5788',
-        # 'ff0e1ff937b7aaa29b8953a54c978fe8'
+        # '9cb20e0fb07d9f3c5a5f6bba4134dc95',
+        # '69c2502236fb0bf57ce6ce677feef355'
         # )
         # AND `status_main_member` IS NULL
         # ORDER BY RAND() LIMIT 1;
         # """
+        sel = """
+        SELECT `com_id`,`com_name`,`status_main_member`
+        FROM `com_info`
+        WHERE `other_id` LIKE '%ls1000%'
+        AND LENGTH(`com_id`) = 32
+        AND `status_main_member` IS NULL
+        ORDER BY RAND() LIMIT 1;
+        """
         result = mm.db.selsts(sel)
         if result == ():
             result = [None, None, None]
@@ -85,53 +63,30 @@ class MainMember():
 
     def verify_cond(self): #验证是否符合继续采集的条件
         mm = MainMember()
-        sel = """
-        SELECT count(*) FROM `com_info`
-        WHERE `chain` ='虚拟现实'
-        AND LENGTH(com_id) > 8
-        AND `area` = '广东省'
-        AND `status_main_member` IS NULL;
-        """
+        # sel = """
+        # SELECT count(*) FROM `com_info`
+        # WHERE `chain` ='虚拟现实'
+        # AND LENGTH(com_id) > 8
+        # AND `area` = '广东省'
+        # AND `status_main_member` IS NULL;
+        # """
         # sel = """
         # SELECT count(*)
         # FROM `com_info`
         # WHERE `com_id` IN
         # (
-        # '06b9ede70996255ed343050895046d00',
-        # '09a2b97c0596a84cf14404a4bd2c37d5',
-        # '18ff2c7ad1d11bfe40e0bec84f6d04d3',
-        # '1b16bbdae1540c6a72cd81d918b7c1f6',
-        # '30c09ef2def97bd3dc8d021fc2233b05',
-        # '31755ff79f6e867d79f7e49cb34da867',
-        # '424b1559bdac92d298cf9751979eb26b',
-        # '47967ccec9d2e681d6f478e0dd16e0b9',
-        # '48431ef3f2c62cc60e1f4c22a178ee50',
-        # '4c468b205f73f703274e9db7f769a03f',
-        # '5602135acdc60cd54daf58cffbc24367',
-        # '61b780963a4bc4df5707fe376e41fb6f',
-        # '652177a5d80be3d70d7460a09018f599',
-        # '722e57a557a857c16121d5c03bd06d42',
-        # '7bb7f10fbffbdb6af869af34e8697ecc',
-        # '89d337c3d33410e68ca65d7933bd7d05',
-        # '8ad8b2d2c15fb92f9ce14107489e83cd',
-        # '9779771217b77e4538bd505660939c9a',
-        # '9b0c52e7af1ee199857b94bc3ea6be3d',
-        # 'a484e7a0b3167f6b257beb51dd93b241',
-        # 'a58533710987ecf98159545b61505a74',
-        # 'a5a0ba522ce994fb2a8de3a7625534e1',
-        # 'a9aa7de83d5d7b4c5008310395b1f403',
-        # 'ad797adc3b0a3fe293a0d7238c671b72',
-        # 'af8ef0be6adcc6cc6c5b5d1c217b487c',
-        # 'b45f3cc43a98aa52f5b3409cef1d6cd9',
-        # 'd3d4ff0894e82ca22a9e6b3a66fda267',
-        # 'dbe7a5624002aec7b0f26445c94f60cc',
-        # 'e06f5af040745430aec2faf8684ae3c7',
-        # 'f11933e8723fd03d325529bd2adc19a6',
-        # 'fa078a468930c63c92f7909b5a1c5788',
-        # 'ff0e1ff937b7aaa29b8953a54c978fe8'
+        # '9cb20e0fb07d9f3c5a5f6bba4134dc95',
+        # '69c2502236fb0bf57ce6ce677feef355'
         # )
         # AND `status_main_member` IS NULL;
         # """
+        sel = """
+        SELECT count(*)
+        FROM `com_info`
+        WHERE `other_id` LIKE '%ls1000%'
+        AND LENGTH(`com_id`) = 32
+        AND `status_main_member` IS NULL;
+        """
         result = mm.get_column(sel)[0]
         return result
 

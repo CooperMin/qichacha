@@ -85,7 +85,7 @@ class PatentInfo():
         SELECT com_id,com_name,status_patent,count_patent 
         FROM com_info WHERE status_patent IS NULL
         AND count_patent != 0
-        AND origin LIKE '%毛明%'
+        AND `other_id` LIKE '%ls1000%'
         ORDER BY RAND() LIMIT 1;
         """
         result = db().selsts(sel)

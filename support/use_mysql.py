@@ -6,7 +6,8 @@
 import time
 import pymysql
 
-class ConnMysql():
+
+class ConnMysql:
     def __init__(self): #
         ## -- cedata服务器 -- ##
         # self.conn = pymysql.connect(
@@ -24,7 +25,9 @@ class ConnMysql():
             port = 3306,
             user = 'root',
             passwd = 'admin',
+            # db = 'recruit_temp'
             db = 'cebd_laoshan'
+            # db = 'db_for_recruit'
         )
         ## -- 本地服务器 -- ##
 
