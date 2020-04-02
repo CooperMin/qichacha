@@ -70,7 +70,7 @@ class AdmLicense():
                 pass
             else:
                 count += 1
-                com_url = f'https://www.qichacha.com/firm_{com_id}.html'
+                com_url = f'https://www.qcc.com/firm_{com_id}.html'
                 hds = gh().header()
                 time.sleep(random.randint(3, 5))
                 res = requests.get(com_url, headers=hds).text
@@ -116,7 +116,7 @@ class AdmLicenseBc(AdmLicense):
                 pass
             else:
                 count += 1
-                com_url = f'https://www.qichacha.com/firm_{com_id}.html'
+                com_url = f'https://www.qcc.com/firm_{com_id}.html'
                 hds = gh().header()
                 time.sleep(random.randint(3, 5))
                 res = requests.get(com_url, headers=hds).text
@@ -170,7 +170,7 @@ class AdmLicenseBc(AdmLicense):
         key = dk().search_key(com_name)
         count = 0
         for page in range(1, count_page + 1):
-            index_url = 'https://www.qichacha.com'
+            index_url = 'https://www.qcc.com'
             page_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=run&box=licens'
             hds = gh().header()
             hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})
@@ -265,7 +265,7 @@ class AdmLicenseCc(AdmLicense): #行政许可[信用中国]
                 pass
             else:
                 count += 1
-                com_url = f'https://www.qichacha.com/firm_{com_id}.html'
+                com_url = f'https://www.qcc.com/firm_{com_id}.html'
                 hds = gh().header()
                 time.sleep(random.randint(3, 5))
                 res = requests.get(com_url, headers=hds).text
@@ -305,7 +305,7 @@ class AdmLicenseCc(AdmLicense): #行政许可[信用中国]
         count_cc = value[2]
         key = dk().search_key(com_name)
         count = 0
-        index_url = 'https://www.qichacha.com'
+        index_url = 'https://www.qcc.com'
         page_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&p={page}&tab=run'
         hds = gh().header()
         hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})
@@ -332,7 +332,7 @@ class AdmLicenseCc(AdmLicense): #行政许可[信用中国]
                     dec_date = content.xpath('td[4]/text()')[0]
                     time.sleep(random.randint(1, 2))
                     dt_id = content.xpath('td[5]/a[@class="xzxukeView"]/@onclick')[0].split('xzxukeView("')[1].split('")')[0]
-                    dt_url = 'https://www.qichacha.com/company_xzxukeView'
+                    dt_url = 'https://www.qcc.com/company_xzxukeView'
                     para = {'id':f'{dt_id}'}
                     res_info = requests.post(dt_url, headers=hds,data=para).text
                     status = json.loads(res_info)['status']

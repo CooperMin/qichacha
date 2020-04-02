@@ -11,11 +11,11 @@ class TimeInfo():
         return localtime
 
     def random_sec(self):
-        sec = random.randint(2,4)
+        sec = random.randint(3, 6)  # (4, 7)最为稳定
         return sec
 
 class DealKey():
-    def search_key(self,key): #根据关键词进行检索
+    def search_key(self, key): #根据关键词进行检索
         zh_model = re.compile(u'[\u4e00-\u9fa5]')
         match = zh_model.search(key)
         if match: #判断是否包含汉字，如果包含则对汉字做处理

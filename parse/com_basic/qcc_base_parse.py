@@ -16,7 +16,7 @@ class BaseInfoParse(object):
             word = tree.xpath('//div[@class="row tags"]/span[contains(@class,"ntag text-pl")]/text()')[0].strip()
         except:
             word = None
-        if word in ['社会组织', '事业单位', '学校', '基金会', '香港企业', '台湾企业', '律所']:
+        if word in ['社会组织', '事业单位', '学校', '基金会', '香港企业', '台湾企业', '律所', '医院']:
             ori_type = word
         else:
             # 根据经营状态是否存在判断是大陆企业还是其它未被标记的事业单位，存在经营状态则为大陆企业
@@ -89,6 +89,8 @@ class BaseInfoParse(object):
                 0].text.strip()  # 电话
         try:
             email = tree.xpath('//span[contains(text(),"邮箱：")]/following-sibling::span[1]/a')[0].text.strip()  # 邮箱
+            if '...' in email:
+                email = tree.xpath('//span[contains(text(),"邮箱：")]/following-sibling::span[1]/a/@href')[0].strip().replace('mailto:','')  # 邮箱
         except:
             email = tree.xpath('//span[contains(text(),"邮箱：")]/following-sibling::span[1]')[0].text.strip()  # 邮箱
         try:
@@ -211,7 +213,10 @@ class BaseInfoParse(object):
         area = tree.xpath('//td[contains(text(),"所属地区") and @class="tb"]/following-sibling::td[1]')[0].text.strip()
         com_en_name = tree.xpath('//td[contains(text(),"英文名")]/following-sibling::td[1]')[0].text.strip()
         com_used_name = tree.xpath('//td[contains(text(),"曾用名")]/following-sibling::td[1]')[0].text.strip()
-        insured = tree.xpath('//td[contains(text(),"参保人数")]/following-sibling::td[1]')[0].text.strip()
+        try:
+            insured = tree.xpath('//td[contains(text(),"参保人数")]/following-sibling::td[1]')[0].text.strip()
+        except:
+            insured = '-'
         com_size = tree.xpath('//td[contains(text(),"人员规模")]/following-sibling::td[1]')[0].text.strip()
         business_term = tree.xpath('//td[contains(text(),"营业期限") and @class="tb"]/following-sibling::td[1]')[
             0].text.strip()
@@ -225,7 +230,7 @@ class BaseInfoParse(object):
               f'统一社会信用代码：{uscc}\n纳税人识别号：{tin}\n注册号：{regno}\n组织机构代码：{occ}\n经营状态：{management_form}\n'
               f'公司类型：{com_type}\n成立日期：{create_date}\n法人：{legal_person}\n注册资本：{reg_cap}\n实缴资本：{paid_in_cap}\n'
               f'营业期限：{business_term}\n登记机关：{reg_auth}\n核准日期：{approval_date}\n公司规模：{com_size}\n所属行业：{industry}\n公司英文名：{com_en_name}\n'
-              f'曾用名：{com_used_name}\n所属地区：{area}\n参保人数:{insured}\n经营范围：{scope_of_business}\n公司介绍：{intro}\n'
+              f'曾用名：{com_used_name}\n所属地区：{area}\n参保人数：{insured}\n经营范围：{scope_of_business}\n公司介绍：{intro}\n'
               f'知识产权：{count_ipr}\n'
               f'商标信息：{count_tm}\n专利信息：{count_patent}\n证书信息：{count_cer}\n作品著作权：{count_cpr_of_works}\n软件著作权：{count_cpr_of_soft}\n'
               f'网站信息：{count_web}\n')

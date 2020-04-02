@@ -76,13 +76,18 @@ class ComBase:
             com_url = None
             print(f'未检索到公司名称类似 {kw} 的相关企业！')
         else:
-            index_url = 'https://www.qichacha.com'
+            index_url = 'https://www.qcc.com'
             try:
                 # 获取检索结果，匹配与所给公司名称最接近的公司的链接
                 com_link = tree.xpath('//*[@id="search-result"]/tr[1]/td[2]/a[@class="ma_h1"]/@href')[0]
             except:
                 # 获取检索结果，匹配与所给公司名称最接近的公司的链接
                 com_link = tree.xpath('//*[@id="search-result"]/tr[1]/td[3]/a[@class="ma_h1"]/@href')[0]
+                if 'groupdetail' in com_link:
+                    try:
+                        com_link = tree.xpath('//*[@id="search-result"]/tr[2]/td[2]/a[@class="ma_h1"]/@href')[0]
+                    except:
+                        com_link = tree.xpath('//*[@id="search-result"]/tr[2]/td[3]/a[@class="ma_h1"]/@href')[0]
             com_id = re.findall(r'(?<=/firm_)(.*)(?=\.html)', com_link)[0]
             com_url = ''.join((index_url, com_link))  # 拼接为完整链接)
         return com_id, kw, com_url, url_search
@@ -91,13 +96,13 @@ class ComBase:
         header = self.gh.header()
         header.update({'Referer':f'{url_search}'})
         res = requests.get(com_url, headers=header).text
-        self.tm.random_sec()
+        time.sleep(self.tm.random_sec())
         tree = self.gm.verify(res)
         return tree, com_id, kw
 
     def req_com_other_page(self, com_id, com_url):
         header = self.gh.header()
-        header.update({'Referer': f'https://www.qichacha.com/firm_{com_id}.shtml',
+        header.update({'Referer': f'https://www.qcc.com/firm_{com_id}.shtml',
                        'X-Requested-With': 'XMLHttpRequest'})
         res = requests.get(com_url, headers=header).text
         self.tm.random_sec()
@@ -148,7 +153,7 @@ class ComBase:
                     kw = out_come[2]
                     com_name = tree.xpath('//input[@name="toCompanyName"]/@value')[0].strip().replace('（', '(').replace('）', ')')
                     parm = self.dk.search_key(com_name)
-                    com_url = f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={quote(parm)}&tab=base'
+                    com_url = f'https://www.qcc.com/company_getinfos?unique={com_id}&companyname={quote(parm)}&tab=base'
                     result = bip(tree).verify_is_listed()
                     basic = bip(tree).common_word()
                     ori_type = bip(tree).verify_ori_type()
@@ -169,6 +174,8 @@ class ComBase:
                         bip(tree).public_institution(basic, ori_type, com_id, kw, num, company_count)
                     elif ori_type == '学校':
                         bip(tree).public_institution(basic, ori_type, com_id, kw, num, company_count)
+                    elif ori_type == '医院':
+                        bip(tree).public_institution(basic, ori_type, com_id, kw, num, company_count)
                     elif ori_type == '律所':
                         bip(tree).law_firm(basic, ori_type, com_id, kw, num, company_count)
                     else:
@@ -177,6 +184,12 @@ class ComBase:
             print('采集完成!')
         else:
             exit(print('不符合当前的采集要求!'))
+
+    def running(self):
+        cba = ComBase()
+        com_list = get_com_list_from_file()
+        cba.excu_com(com_list)
+
 
 
 
@@ -190,8 +203,10 @@ class ComBase:
 if __name__ == '__main__':
     cba = ComBase()
     # 从文件中读取方式获取待采集的公司列表
-    com_list = get_com_list_from_file()
+    # com_list = get_com_list_from_file()
     # 从数据库中读取方式获取待采集的公司列表
     # sql = input_sql()
     # com_list = cba.get_com_list_from_db(sql)
-    cba.excu_com(com_list)
+    # cba.excu_com(com_list)
+    cba.running()
+

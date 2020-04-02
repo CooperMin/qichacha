@@ -17,7 +17,7 @@ class MainMember():
         self.db = db()
         self.gm = gm()
         self.tm = tm()
-        self.index_url = 'https://www.qichacha.com'
+        self.index_url = 'https://www.qcc.com'
 
     def get_com_id(self):
         mm = MainMember()

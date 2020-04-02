@@ -20,7 +20,7 @@ class CprOfSoft():
         self.gh = gh()
         self.tm = tm()
         self.gm = gm()
-        self.index_url = 'https://www.qichacha.com'
+        self.index_url = 'https://www.qcc.com'
 
     def get_com_id(self):
         cos = CprOfSoft()
@@ -71,7 +71,7 @@ class CprOfSoft():
         if com_id == None:
             value = [None, None, None]
         else:
-            index_url = 'https://www.qichacha.com'
+            index_url = 'https://www.qcc.com'
             com_url = f'{index_url}/company_getinfos?unique={com_id}&companyname={key}&tab=assets'
             hds = cos.gh.header()
             hds.update({'Referer': f'{index_url}/firm_{com_id}.html'})

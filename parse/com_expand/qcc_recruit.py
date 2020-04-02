@@ -21,7 +21,7 @@ class RecruitInfo():
         self.tm = tm()
         self.gh = gh()
         self.gm = gm()
-        self.index_url = 'https://www.qichacha.com/'
+        self.index_url = 'https://www.qcc.com/'
 
     def sql(self): #输出需要的sql查询结果
         # sel = """
@@ -57,7 +57,7 @@ class RecruitInfo():
         if com_id == None:
             count_rc = 0
         else:
-            com_url = f'https://www.qichacha.com/firm_{com_id}.html'
+            com_url = f'https://www.qcc.com/firm_{com_id}.html'
             hds = rc.gh.header()
             time.sleep(random.randint(3, 5))
             res = requests.get(com_url, headers=hds).text
@@ -76,7 +76,7 @@ class RecruitInfo():
         if count_rc > 0:
             info_url = f'https://www.qichacha.com/company_getinfos?unique={com_id}&companyname={key}&tab=run'
             hds = rc.gh.header()
-            hds.update({'Referer':f'https://www.qichacha.com/firm_{com_id}.html'})
+            hds.update({'Referer':f'https://www.qcc.com/firm_{com_id}.html'})
             time.sleep(random.randint(3, 5))
             res = requests.get(info_url, headers=hds).text
             tree = rc.gm.verify(res)

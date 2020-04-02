@@ -18,7 +18,7 @@ class StockHolder():
         self.db = db()
         self.gm = gm()
         self.tm = tm()
-        self.index_url = 'https://www.qichacha.com'
+        self.index_url = 'https://www.qcc.com'
 
     def get_com_id(self):
         sh = StockHolder()
@@ -156,7 +156,7 @@ class StockHolder():
         else:
             para = sh.sh_detail_para(com_id,com_name,page)
             header = sh.gh.header()
-            header.update({'Referer':f'https://www.qichacha.com/firm_{com_id}.html'})
+            header.update({'Referer':f'https://www.qcc.com/firm_{com_id}.html'})
             url = ''.join((sh.index_url,'/company_getinfos?'))
             res = requests.get(url,params=para,headers=header).text
             tree = sh.gm.verify(res)

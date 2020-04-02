@@ -92,18 +92,28 @@ class ComBase():
             else:
                 tag_status = False
             if 'ntag text-list' in com_tags: #是否上市公司
+                # 'https://www.qichacha.com/firm_fb8e1c8a96764b8feebc73d5c9539d13.html#ipo' #中国联通 #上市公司(大陆)
+                # 'https://www.qichacha.com/firm_hffa9aeef1b48feb3c8be8075f624f21.html#hkstock' #中国联通 #上市公司(香港)
+                # 'https://www.qichacha.com/firm_3f603703d59a04cbe427e5825099a565.html' #百度 #美股上市
                 is_listed = True
             else:
                 is_listed = False
             if 'ntag text-primary' in com_tags: #是否高新技术企业
+                # 'https://www.qichacha.com/firm_a30b58af42191f65b49cdab4123c5bc7.html' #拉勾 #高新技术企业
                 is_hthr = True
             else:
                 is_hthr = False
             if 'ntag text-pl' in com_tags: #判断机构类型（如：港澳台公司、学校、律师事务所、基金会等）
+                # 'https://www.qichacha.com/firm_hff9e001f96d3646631943fabb12e07e.html' #阿斯顿·马丁 #香港公司
+                # 'https://www.qichacha.com/firm_x563b44c2e138cf9ab6b0b17867944cf.html' #北京大学 #学校
+                # 'https://www.qichacha.com/firm_wb2a3d31faa52bb015168481379d19c0.html' #国浩律师事务所 #律所
+                # 'https://www.qichacha.com/firm_j3074e0a05f1a0bbd4d9394588ecde97.html' #北京中科科教发展基金会 #基金会
                 org_status = True
             else:
                 org_status = False
             if 'ntag text-so' in com_tags: #是否社会组织（如：研究院等）
+                # 'https://www.qichacha.com/firm_s6aef3ff1b6e73f88d1bf7bf75d0ab20.html' #青岛精工虚拟现实研究院 #社会组织
+                # 'https://www.qichacha.com/firm_gcfaf3da7defeacf2cb9d3a18c2c07f5.html' #中国社会科学院研究生院深圳研究院 #事业单位
                 so_status = True
             else:
                 so_status = False
@@ -113,7 +123,7 @@ class ComBase():
 
     def concat_type_parse_comm(self):
         cb = ComBase()
-        tree = cm.test_func()
+        tree = cb.test_func()
         result = cb.verify_com_type(tree)
 
 
